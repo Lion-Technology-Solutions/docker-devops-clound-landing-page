@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "80:80"
+    restart: unless-stopped
+    container_name: liontech-web
+    networks:
+      - liontech-net
+
+  # You can add more services like a backend or database if needed
+  # backend:
+  #   image: your-backend-image
+  #   ports:
+  #     - "3000:3000"
+  #   networks:
+  #     - liontech-net
+
+networks:
+  liontech-net:
+    driver: bridge
