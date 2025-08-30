@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LionTech DevOps and Cloud Training Program | 7 Days Free Trial</title>
     
-    <!-- Open Graph / Social Media Meta Tags bbb -->
+    <!-- Open Graph / Social Media Meta Tags -->
     <meta property="og:title" content="LionTech DevOps and Cloud Training Program">
     <meta property="og:description" content="Master in-demand skills with our comprehensive training program. Get 7 Days Free Trial to experience our world-class curriculum and mentorship.">
     <meta property="og:image" content="https://raw.githubusercontent.com/Lion-Technology-Solutions/docker-liontech-academy-full-website/master/liontechacademylogo.jpg">
@@ -370,6 +370,77 @@
             padding: 5px 15px;
             border-radius: 20px;
             font-weight: bold;
+        }
+        
+        /* Syllabus Section */
+        .syllabus {
+            padding: 80px 0;
+            background-color: var(--light-color);
+        }
+        
+        .syllabus-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .monthly-module {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .module-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--primary-color);
+        }
+        
+        .module-title {
+            font-size: 24px;
+            color: var(--secondary-color);
+        }
+        
+        .module-duration {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+        
+        .module-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .module-topics h4, .module-projects h4 {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .module-topics ul, .module-projects ul {
+            list-style-type: none;
+        }
+        
+        .module-topics li, .module-projects li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .module-topics li:before, .module-projects li:before {
+            content: "•";
+            color: var(--primary-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
         }
         
         /* Testimonials */
@@ -758,6 +829,10 @@
             .guarantee-container {
                 flex-wrap: wrap;
             }
+            
+            .module-content {
+                grid-template-columns: 1fr;
+            }
         }
         
         @media (max-width: 768px) {
@@ -795,6 +870,12 @@
                 transform: none;
                 margin-bottom: 20px;
                 display: inline-block;
+            }
+            
+            .module-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
             }
         }
         
@@ -867,6 +948,7 @@
             <nav>
                 <ul>
                     <li><a href="#features">Features</a></li>
+                    <li><a href="#syllabus">Syllabus</a></li>
                     <li><a href="#program">Program</a></li>
                     <li><a href="#testimonials">Success Stories</a></li>
                     <li><a href="#enroll">Enroll</a></li>
@@ -907,7 +989,7 @@
             
             <div class="hero-buttons animate__animated animate__fadeIn animate__delay-2s">
                 <a href="#enroll" class="cta-button">Start Free Trial</a>
-                <a href="#program" class="secondary-button">Learn More</a>
+                <a href="#syllabus" class="secondary-button">View Syllabus</a>
             </div>
         </div>
     </section>
@@ -969,6 +1051,216 @@
         </div>
     </section>
     
+    <!-- Syllabus Section -->
+    <section class="syllabus" id="syllabus">
+        <div class="container">
+            <div class="section-title animate-on-scroll">
+                <h2>Detailed DevOps & Cloud Training Syllabus</h2>
+                <p>Our comprehensive 6-month program covers all essential technologies and practices</p>
+            </div>
+            
+            <div class="syllabus-container">
+                <!-- Month 1 -->
+                <div class="monthly-module animate-on-scroll">
+                    <div class="module-header">
+                        <h3 class="module-title">Month 1: Linux Fundamentals & Cloud Basics</h3>
+                        <span class="module-duration">4 Weeks</span>
+                    </div>
+                    <div class="module-content">
+                        <div class="module-topics">
+                            <h4>Topics Covered</h4>
+                            <ul>
+                                <li>Linux Operating System Fundamentals</li>
+                                <li>Command Line Proficiency</li>
+                                <li>Shell Scripting Basics</li>
+                                <li>File Systems and Permissions</li>
+                                <li>Networking Fundamentals</li>
+                                <li>Introduction to Cloud Computing</li>
+                                <li>Cloud Service Models (IaaS, PaaS, SaaS)</li>
+                                <li>Cloud Deployment Models</li>
+                            </ul>
+                        </div>
+                        <div class="module-projects">
+                            <h4>Hands-on Projects</h4>
+                            <ul>
+                                <li>Linux Server Setup and Configuration</li>
+                                <li>Bash Scripting Automation Tasks</li>
+                                <li>Cloud Account Setup (AWS, Azure, GCP)</li>
+                                <li>Basic Cloud Resource Provisioning</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Month 2 -->
+                <div class="monthly-module animate-on-scroll">
+                    <div class="module-header">
+                        <h3 class="module-title">Month 2: Python for DevOps & AWS Fundamentals</h3>
+                        <span class="module-duration">4 Weeks</span>
+                    </div>
+                    <div class="module-content">
+                        <div class="module-topics">
+                            <h4>Topics Covered</h4>
+                            <ul>
+                                <li>Python Programming Fundamentals</li>
+                                <li>Python for Automation Scripts</li>
+                                <li>Working with APIs using Python</li>
+                                <li>AWS Core Services (EC2, S3, VPC)</li>
+                                <li>AWS IAM and Security</li>
+                                <li>Database Services (RDS, DynamoDB)</li>
+                                <li>Serverless Computing with AWS Lambda</li>
+                                <li>AWS CLI and SDK</li>
+                            </ul>
+                        </div>
+                        <div class="module-projects">
+                            <h4>Hands-on Projects</h4>
+                            <ul>
+                                <li>Python Scripts for System Administration</li>
+                                <li>AWS Three-Tier Architecture Deployment</li>
+                                <li>Serverless Application Deployment</li>
+                                <li>Automated Backup System</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Month 3 -->
+                <div class="monthly-module animate-on-scroll">
+                    <div class="module-header">
+                        <h3 class="module-title">Month 3: Containers & Container Orchestration</h3>
+                        <span class="module-duration">4 Weeks</span>
+                    </div>
+                    <div class="module-content">
+                        <div class="module-topics">
+                            <h4>Topics Covered</h4>
+                            <ul>
+                                <li>Docker Fundamentals</li>
+                                <li>Containerization Concepts</li>
+                                <li>Docker Images and Registries</li>
+                                <li>Docker Networking and Storage</li>
+                                <li>Introduction to Kubernetes</li>
+                                <li>Kubernetes Architecture</li>
+                                <li>Pods, Deployments, and Services</li>
+                                <li>Kubernetes Networking</li>
+                                <li>ConfigMaps and Secrets</li>
+                            </ul>
+                        </div>
+                        <div class="module-projects">
+                            <h4>Hands-on Projects</h4>
+                            <ul>
+                                <li>Containerizing Applications with Docker</li>
+                                <li>Multi-container Application with Docker Compose</li>
+                                <li>Kubernetes Cluster Setup</li>
+                                <li>Deploying Microservices on Kubernetes</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Month 4 -->
+                <div class="monthly-module animate-on-scroll">
+                    <div class="module-header">
+                        <h3 class="module-title">Month 4: Advanced Kubernetes & Infrastructure as Code</h3>
+                        <span class="module-duration">4 Weeks</span>
+                    </div>
+                    <div class="module-content">
+                        <div class="module-topics">
+                            <h4>Topics Covered</h4>
+                            <ul>
+                                <li>Kubernetes Advanced Concepts</li>
+                                <li>Stateful Applications in Kubernetes</li>
+                                <li>Kubernetes Storage Options</li>
+                                <li>Helm Package Manager</li>
+                                <li>NGINX Ingress Controller</li>
+                                <li>Terraform Fundamentals</li>
+                                <li>Infrastructure as Code Principles</li>
+                                <li>Terraform Modules and State Management</li>
+                                <li>CloudFormation Basics</li>
+                            </ul>
+                        </div>
+                        <div class="module-projects">
+                            <h4>Hands-on Projects</h4>
+                            <ul>
+                                <li>Deploying Stateful Applications with Helm Charts</li>
+                                <li>Configuring NGINX Ingress for Kubernetes</li>
+                                <li>Infrastructure Provisioning with Terraform</li>
+                                <li>Multi-environment Deployment Pipeline</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Month 5 -->
+                <div class="monthly-module animate-on-scroll">
+                    <div class="module-header">
+                        <h3 class="module-title">Month 5: CI/CD Pipelines & Configuration Management</h3>
+                        <span class="module-duration">4 Weeks</span>
+                    </div>
+                    <div class="module-content">
+                        <div class="module-topics">
+                            <h4>Topics Covered</h4>
+                            <ul>
+                                <li>Continuous Integration Concepts</li>
+                                <li>Continuous Delivery vs Deployment</li>
+                                <li>Jenkins Pipeline as Code</li>
+                                <li>GitHub Actions Workflows</li>
+                                <li>GitLab CI/CD</li>
+                                <li>Configuration Management with Ansible</li>
+                                <li>Ansible Playbooks and Roles</li>
+                                <li>Infrastructure Monitoring Basics</li>
+                                <li>Log Management with ELK Stack</li>
+                            </ul>
+                        </div>
+                        <div class="module-projects">
+                            <h4>Hands-on Projects</h4>
+                            <ul>
+                                <li>End-to-End CI/CD Pipeline Implementation</li>
+                                <li>Multi-stage Deployment Automation</li>
+                                <li>Infrastructure Configuration with Ansible</li>
+                                <li>Monitoring and Alerting System Setup</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Month 6 -->
+                <div class="monthly-module animate-on-scroll">
+                    <div class="module-header">
+                        <h3 class="module-title">Month 6: Advanced Topics & Career Preparation</h3>
+                        <span class="module-duration">4 Weeks</span>
+                    </div>
+                    <div class="module-content">
+                        <div class="module-topics">
+                            <h4>Topics Covered</h4>
+                            <ul>
+                                <li>DevOps Security Practices (DevSecOps)</li>
+                                <li>Cloud Security Best Practices</li>
+                                <li>Performance Optimization</li>
+                                <li>Disaster Recovery Strategies</li>
+                                <li>Cost Optimization in Cloud</li>
+                                <li>Resume Preparation for DevOps Roles</li>
+                                <li>Job Application Strategies</li>
+                                <li>Technical Interview Preparation</li>
+                                <li>Mock Interview Sessions</li>
+                                <li>Negotiation Techniques</li>
+                            </ul>
+                        </div>
+                        <div class="module-projects">
+                            <h4>Hands-on Projects</h4>
+                            <ul>
+                                <li>Capstone Project: End-to-End DevOps Implementation</li>
+                                <li>Security Hardening of Infrastructure</li>
+                                <li>Resume Building Workshop</li>
+                                <li>Mock Technical Interviews</li>
+                                <li>Portfolio Development</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <!-- Slider Section -->
     <section class="slider-section">
         <div class="container">
@@ -986,14 +1278,6 @@
                             <p>Our live sessions provide real-time interaction with instructors and peers.</p>
                         </div>
                     </div>
-                    <div class="slide">
-                        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Hands-on projects">
-                        <div class="slide-content">
-                            <h3>Practical Project Work</h3>
-                            <p>Students gain hands-on experience with real-world scenarios.</p>
-                        </div>
-                    </div>
-
                     <div class="slide">
                         <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Hands-on projects">
                         <div class="slide-content">
@@ -1033,9 +1317,11 @@
                         <li><i class="fas fa-check"></i> Containerization & Orchestration (Docker, Kubernetes)</li>
                         <li><i class="fas fa-check"></i> CI/CD Pipelines (Jenkins, GitHub Actions)</li>
                         <li><i class="fas fa-check"></i> Configuration Management (Ansible, Chef, Puppet)</li>
-                        <li><i class="fas fa-check"></i> Monitoring & Logging (Prometheus,Grafana ELK Stack)</li>
+                        <li><i class="fas fa-check"></i> Monitoring & Logging (Prometheus, Grafana, ELK Stack)</li>
                         <li><i class="fas fa-check"></i> Security Best Practices</li>
                         <li><i class="fas fa-check"></i> Linux Administration, Python & Bash Scripting for DevOps</li>
+                        <li><i class="fas fa-check"></i> Helm Package Manager</li>
+                        <li><i class="fas fa-check"></i> NGINX Ingress Controller</li>
                     </ul>
                 </div>
                 
@@ -1145,7 +1431,7 @@
         <div class="container">
             <div class="section-title animate-on-scroll">
                 <h2>Start Your DevOps Journey Today</h2>
-                <h2>Starting  September 13, 2025  -  for only 1800 USD</h2>
+                <h2>Starting  September 13, 2025  -  for only 1800</h2>
                 <p>Join our next cohort and take advantage of our 7 Days Free Trial offer</p>
             </div>
             <div class="form-container animate-on-scroll">
@@ -1357,7 +1643,8 @@
                     <h3>Quick Links</h3>
                     <ul>
                         <li><a href="#features">Program Features</a></li>
-                        <li><a href="#program">Curriculum</a></li>
+                        <li><a href="#syllabus">Curriculum</a></li>
+                        <li><a href="#program">Program Details</a></li>
                         <li><a href="#testimonials">Success Stories</a></li>
                         <li><a href="#enroll">Enrollment</a></li>
                         <li><a href="#">Blog</a></li>
