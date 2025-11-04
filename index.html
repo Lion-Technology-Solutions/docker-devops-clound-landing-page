@@ -3,22 +3,21 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>LionTech Academy — Upskill with DevOps, Cloud, AI & Cybersecurity</title>
-  <meta name="description" content="High-impact, job-ready training programs in DevOps, Cloud Computing, AI for Entrepreneurs & Innovators, and Cyber Security. Enroll now and accelerate your tech career." />
+  <title>LionTech Academy — DevOps, Cloud, AI & Cybersecurity Training</title>
+  <meta name="description" content="Job-ready, mentor-led programs in DevOps, Cloud Computing, AI for Entrepreneurs & Innovators, and Cyber Security. Enroll now and accelerate your tech career." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root{
-      --brand-red: #E02127; /* LionTech split background red */
-      --brand-blue: #1F3D8A; /* LionTech split background blue */
-      --brand-dark: #0F172A; /* slate-900 */
+      --brand-red: #E02127; /* LionTech split red */
+      --brand-blue: #1F3D8A; /* LionTech split blue */
+      --brand-dark: #0F172A;
       --brand-text: #0B1020;
-      --brand-muted: #6B7280; /* gray-500 */
-      --bg-soft: #F8FAFC; /* slate-50 */
+      --brand-muted: #6B7280;
+      --bg-soft: #F8FAFC;
       --card: #FFFFFF;
-      --accent: #10B981; /* emerald for CTA accents */
-      --warning: #F59E0B; /* amber */
+      --accent: #10B981; /* emerald */
       --ring: rgba(16,185,129,0.35);
       --shadow: 0 10px 25px rgba(2,6,23,0.12);
       --radius: 18px;
@@ -34,14 +33,14 @@
     .nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; }
     .logo { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 20px; letter-spacing: 0.3px; }
     .logo-badge { width: 40px; height: 40px; border-radius: 12px; background: linear-gradient(135deg, var(--brand-red), var(--brand-blue)); display: grid; place-items: center; color: #fff; font-weight: 800; }
-    .nav a { font-weight: 600; color: #0f172a; opacity: 0.85; }
+    .nav a { font-weight: 600; color: #0f172a; opacity: 0.9; }
     .nav-menu { display: flex; gap: 22px; align-items: center; }
     .cta { display: inline-flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 999px; background: var(--accent); color: #fff; font-weight: 700; box-shadow: 0 8px 18px rgba(16,185,129,0.35); }
     .cta:hover { transform: translateY(-1px); box-shadow: 0 10px 22px rgba(16,185,129,0.45); }
 
     /* Hero */
-    .hero { position: relative; overflow: hidden; background: linear-gradient(90deg, var(--brand-red) 0%, var(--brand-red) 47%, var(--brand-blue) 47%, var(--brand-blue) 100%); color: #fff; }
-    .hero::after { content: ""; position: absolute; inset: 0; background: radial-gradient(1200px 300px at 70% 0%, rgba(255,255,255,0.12), transparent 60%); pointer-events: none; }
+    .hero { position: relative; overflow: hidden; color: #fff; }
+    .hero-bg { background: linear-gradient(90deg, var(--brand-red) 0%, var(--brand-red) 47%, var(--brand-blue) 47%, var(--brand-blue) 100%); }
     .hero-wrap { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 32px; padding: 64px 0; }
     .hero h1 { font-size: clamp(28px, 5vw, 48px); line-height: 1.05; margin: 0 0 12px; font-weight: 800; }
     .hero p { font-size: clamp(16px, 2.2vw, 18px); opacity: 0.95; margin: 0 0 22px; }
@@ -54,7 +53,7 @@
     h2 { font-size: clamp(22px, 3vw, 32px); margin: 0 0 14px; }
     .sub { color: var(--brand-muted); margin: 0 0 28px; }
 
-    /* Program cards */
+    /* Grid & Cards */
     .grid { display: grid; gap: 20px; }
     @media (min-width: 900px) { .grid.cols-3 { grid-template-columns: repeat(3, 1fr); } }
     @media (min-width: 900px) { .grid.cols-2 { grid-template-columns: repeat(2, 1fr); } }
@@ -69,20 +68,10 @@
     details[open] { background: #fff; border-style: solid; box-shadow: 0 10px 18px rgba(2,6,23,0.06); }
     .syllabus { display: grid; gap: 10px; margin-top: 12px; }
     .syllabus li { padding: 10px 12px; background: #f8fafc; border-radius: 10px; border: 1px solid #eef2f7; }
-    .badge { display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; font-size:12px; font-weight:700; }
-    .badge.success{ background: #ECFDF5; color:#065F46; border:1px solid #A7F3D0; }
-    .badge.warn{ background:#FEF3C7; color:#92400E; border:1px solid #FDE68A; }
 
-    /* Selling points */
-    .kp { display:grid; gap:16px; }
-    @media (min-width: 900px) { .kp { grid-template-columns: repeat(4, 1fr); } }
-    .kp .item { background: var(--card); border: 1px solid #e5e7eb; border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow); }
-    .kp h4 { margin: 0 0 6px; font-size: 16px; }
-    .kp p { margin: 0; color: var(--brand-muted); font-size: 14px; }
-
-    /* Pricing strip */
-    .price-strip { display:flex; flex-wrap:wrap; gap:16px; align-items:center; background:#fff; border:1px solid #e5e7eb; border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); }
-    .price-tag { font-weight: 800; font-size: 28px; }
+    /* People */
+    .avatar { width: 64px; height: 64px; border-radius: 999px; object-fit: cover; border: 3px solid #fff; box-shadow: var(--shadow); }
+    .person { display:flex; align-items: center; gap: 14px; }
 
     /* Form */
     form { display: grid; gap: 12px; }
@@ -104,7 +93,7 @@
     .mt-8 { margin-top: 32px; }
     .mt-4 { margin-top: 16px; }
     .mb-2 { margin-bottom: 8px; }
-    .hidden { display: none !important; }
+    .center { text-align:center; }
   </style>
 </head>
 <body>
@@ -117,16 +106,16 @@
       </a>
       <nav class="nav-menu" aria-label="Primary">
         <a href="#programs">Programs</a>
-        <a href="#outcomes">Outcomes</a>
-        <a href="#enroll">Enroll</a>
-        <a href="#contact">Contact</a>
-        <a class="cta" href="#enroll" aria-label="Enroll now">Enroll Now</a>
+        <a href="#students">Students</a>
+        <a href="#lecturers">Lecturers</a>
+        <a href="#lectures">Lectures</a>
+        <a href="#enroll" class="cta" aria-label="Enroll now">Enroll Now</a>
       </nav>
     </div>
   </header>
 
   <!-- Hero -->
-  <section class="hero" id="top">
+  <section class="hero hero-bg" id="top">
     <div class="container hero-wrap">
       <div>
         <div class="hero-card">
@@ -143,31 +132,18 @@
             <a class="btn btn-ghost" href="#programs">Explore Programs</a>
           </div>
         </div>
-        <div class="price-strip mt-8" aria-live="polite">
-          <div>
-            <div class="badge success">Next Cohort</div>
-            <div class="mt-4"><strong>AI for Entrepreneurs & Innovators</strong> — Starts <strong>Jan 10, 2026</strong> · Saturdays <strong>9–11 AM EST</strong></div>
+        <div class="mt-8" aria-live="polite">
+          <div class="card" style="display:flex; gap:16px; align-items:center;">
+            <div>
+              <div class="btn btn-ghost" style="font-weight:800;">Next Cohort</div>
+              <div class="mt-4"><strong>AI for Entrepreneurs & Innovators</strong> — Starts <strong>Jan 10, 2026</strong> · Saturdays <strong>9–11 AM EST</strong></div>
+            </div>
+            <a class="btn btn-primary" href="#enroll" aria-label="Enroll in AI for Entrepreneurs & Innovators">Enroll</a>
           </div>
-          <div class="price-tag" aria-label="Tuition">$900 USD</div>
-          <a class="btn btn-primary" href="#enroll" aria-label="Enroll in AI for Entrepreneurs & Innovators">Enroll</a>
         </div>
       </div>
       <div>
         <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop" alt="Students collaborating in an online tech class" style="border-radius: var(--radius); box-shadow: var(--shadow); border: 1px solid #e5e7eb;"/>
-      </div>
-    </div>
-  </section>
-
-  <!-- Selling points / Outcomes -->
-  <section id="outcomes">
-    <div class="container">
-      <h2>What you’ll get</h2>
-      <p class="sub">Everything you need to go from learner to job‑ready practitioner.</p>
-      <div class="kp">
-        <div class="item"><h4>Hands-on Projects</h4><p>Ship real-world labs and a capstone employers can review.</p></div>
-        <div class="item"><h4>Industry Mentors</h4><p>Weekly Q&A, code reviews, and 1:1 support.</p></div>
-        <div class="item"><h4>Career Support</h4><p>Resume refresh, LinkedIn polish, and mock interviews.</p></div>
-        <div class="item"><h4>Flexible & Live</h4><p>Weekend-friendly live classes with recordings.</p></div>
       </div>
     </div>
   </section>
@@ -278,7 +254,65 @@
     </div>
   </section>
 
-  <!-- Enrollment form -->
+  <!-- Students gallery / social proof -->
+  <section id="students">
+    <div class="container">
+      <h2>Our Students</h2>
+      <p class="sub">Real people. Real outcomes. Join a global community leveling up their careers.</p>
+      <div class="grid cols-3">
+        <div class="card"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop" alt="Student smiling at laptop"/></div>
+        <div class="card"><img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=800&auto=format&fit=crop" alt="Group of students collaborating"/></div>
+        <div class="card"><img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=800&auto=format&fit=crop" alt="Student presenting project"/></div>
+      </div>
+      <div class="grid cols-3 mt-8">
+        <div class="card"><div class="card-body person"><img class="avatar" src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?q=80&w=256&auto=format&fit=crop" alt="Portrait of Amina"/><div><strong>Amina • DevOps Graduate</strong><p class="sub">“The Kubernetes labs and CI/CD pipeline project helped me land my first DevOps role.”</p></div></div></div>
+        <div class="card"><div class="card-body person"><img class="avatar" src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=256&auto=format&fit=crop" alt="Portrait of Daniel"/><div><strong>Daniel • Cloud Graduate</strong><p class="sub">“I designed a resilient AWS architecture for my capstone—now I do it at work.”</p></div></div></div>
+        <div class="card"><div class="card-body person"><img class="avatar" src="https://images.unsplash.com/photo-1541534401786-2077eed87a75?q=80&w=256&auto=format&fit=crop" alt="Portrait of Priya"/><div><strong>Priya • AI Graduate</strong><p class="sub">“Built an AI MVP in 4 weeks and signed my first paying customers.”</p></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lecturers / Instructors -->
+  <section id="lecturers">
+    <div class="container">
+      <h2>Meet the Lecturers</h2>
+      <p class="sub">Practitioners from industry—bringing real projects and current best practices.</p>
+      <div class="grid cols-3">
+        <div class="card"><div class="card-body"><div class="person"><img class="avatar" src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?q=80&w=256&auto=format&fit=crop" alt="Lecturer: Sarah Kim"/><div><strong>Sarah Kim</strong><p class="sub">Sr. DevOps Engineer @ SaaSCo • Kubernetes, Terraform, GitHub Actions</p></div></div></div></div>
+        <div class="card"><div class="card-body"><div class="person"><img class="avatar" src="https://images.unsplash.com/photo-1542326237-94b1c5a538d9?q=80&w=256&auto=format&fit=crop" alt="Lecturer: Miguel Alvarez"/><div><strong>Miguel Alvarez</strong><p class="sub">Cloud Solutions Architect • AWS Well‑Architected & Cost Optimization</p></div></div></div></div>
+        <div class="card"><div class="card-body"><div class="person"><img class="avatar" src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=256&auto=format&fit=crop" alt="Lecturer: Jade Nwosu"/><div><strong>Jade Nwosu</strong><p class="sub">AI Product Lead • LLM apps, Prompting, and Automation</p></div></div></div></div>
+      </div>
+      <div class="grid cols-3 mt-8">
+        <div class="card"><div class="card-body"><div class="person"><img class="avatar" src="https://images.unsplash.com/photo-1544006659-f0b21884ce1d?q=80&w=256&auto=format&fit=crop" alt="Lecturer: Colin Wright"/><div><strong>Colin Wright</strong><p class="sub">Security Engineer • Cloud Security, SIEM, Incident Response</p></div></div></div></div>
+        <div class="card"><div class="card-body"><div class="person"><img class="avatar" src="https://images.unsplash.com/photo-1554151228-14d9def656e4?q=80&w=256&auto=format&fit=crop" alt="Lecturer: Hana Lee"/><div><strong>Hana Lee</strong><p class="sub">UX for AI • Responsible AI & Product Discovery</p></div></div></div></div>
+        <div class="card"><div class="card-body"><div class="person"><img class="avatar" src="https://images.unsplash.com/photo-1545996124-0501ebae84d5?q=80&w=256&auto=format&fit=crop" alt="Lecturer: Victor Ade"/><div><strong>Victor Ade</strong><p class="sub">Platform Engineer • Observability, Reliability, SRE</p></div></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lectures / Schedule (example for AI cohort) -->
+  <section id="lectures">
+    <div class="container">
+      <h2>Lecture Schedule — AI for Entrepreneurs & Innovators</h2>
+      <p class="sub">Starts <strong>January 10, 2026</strong> · Saturdays <strong>9–11 AM EST</strong> · 8 weeks</p>
+      <div class="card">
+        <div class="card-body">
+          <ol class="syllabus">
+            <li>Week 1 (Jan 10): AI landscape, opportunities & responsible innovation</li>
+            <li>Week 2 (Jan 17): Prompting & research workflows</li>
+            <li>Week 3 (Jan 24): No‑code tools for web & data</li>
+            <li>Week 4 (Jan 31): Automation with Zapier/Make & APIs</li>
+            <li>Week 5 (Feb 7): LLM product prototyping</li>
+            <li>Week 6 (Feb 14): Data prep & evaluation</li>
+            <li>Week 7 (Feb 21): UX for AI, guardrails & feedback</li>
+            <li>Week 8 (Feb 28): Monetization, GTM & Demo day</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Enrollment form (Formspree) -->
   <section id="enroll">
     <div class="container">
       <h2>Apply now</h2>
@@ -286,7 +320,14 @@
       <div class="grid cols-2">
         <div class="card">
           <div class="card-body">
-            <form id="applyForm" onsubmit="return submitForm(event)" aria-label="Application form">
+            <form action="https://formspree.io/f/xzzklnzz" method="POST" aria-label="Application form">
+              <!-- Formspree helpers -->
+              <input type="hidden" name="_subject" value="New LionTech Application" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_next" value="#thank-you" />
+              <!-- Honeypot -->
+              <label class="hidden">Do not fill this out if you're human: <input name="_gotcha"></label>
+
               <div class="row two">
                 <div>
                   <label for="name">Full name</label>
@@ -315,10 +356,10 @@
               </div>
               <div>
                 <label for="notes">What’s your goal?</label>
-                <textarea id="notes" name="notes" rows="4" placeholder="Tell us what you want to achieve…"></textarea>
+                <textarea id="notes" name="message" rows="4" placeholder="Tell us what you want to achieve…"></textarea>
               </div>
               <button class="btn btn-primary" type="submit">Submit application</button>
-              <p id="formStatus" class="sub" role="status" aria-live="polite"></p>
+              <p class="sub">By submitting, you agree to be contacted about your application.</p>
             </form>
           </div>
         </div>
@@ -352,14 +393,26 @@
         </div></div>
         <div class="card"><div class="card-body">
           <h4 class="mb-2">Email</h4>
-          <p><a href="mailto:YOUR-ADMISSIONS-EMAIL@liontechacademy.com">YOUR-ADMISSIONS-EMAIL@liontechacademy.com</a></p>
-          <p style="color:var(--brand-muted); font-size:12px;"><!-- Replace the placeholder above with your official admissions email. --></p>
+          <p><a href="mailto:admissions@liontechacademy.com">admissions@liontechacademy.com</a></p>
         </div></div>
         <div class="card"><div class="card-body">
           <h4 class="mb-2">Location</h4>
           <p>Toronto, ON, Canada</p>
           <p class="sub">Live online classes available worldwide</p>
         </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Thank you anchor (Formspree redirect target) -->
+  <section id="thank-you" class="center">
+    <div class="container">
+      <div class="card">
+        <div class="card-body">
+          <h2>Thank you! 🎉</h2>
+          <p class="sub">Your application was submitted. Our admissions team will reach out shortly.</p>
+          <a class="btn btn-primary" href="#top">Back to top</a>
+        </div>
       </div>
     </div>
   </section>
@@ -377,24 +430,7 @@
   </footer>
 
   <script>
-    // Set current year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Lightweight form handler: replace with your backend endpoint
-    function submitForm(e){
-      e.preventDefault();
-      const btn = e.target.querySelector('button[type="submit"]');
-      const status = document.getElementById('formStatus');
-      btn.disabled = true; btn.textContent = 'Submitting…';
-
-      // Simulate async submit; replace with fetch('/api/apply', {method:'POST', body: new FormData(e.target)})
-      setTimeout(() => {
-        btn.disabled = false; btn.textContent = 'Submit application';
-        status.textContent = 'Thanks! Your application has been received. We will contact you shortly.';
-        e.target.reset();
-      }, 800);
-      return false;
-    }
   </script>
 </body>
 </html>
