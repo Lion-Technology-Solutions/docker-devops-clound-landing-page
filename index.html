@@ -3,100 +3,97 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>LionTech Academy — DevOps, Cloud, AI & Cybersecurity Training</title>
-  <meta name="description" content="Job-ready, mentor-led programs in DevOps, Cloud Computing, AI for Entrepreneurs & Innovators, and Cyber Security. Enroll now and accelerate your tech career." />
+  <title>LionTech Academy — Pilot Program: DevOps, Cloud, AI & Cybersecurity</title>
+  <meta name="description" content="LionTech Academy's pilot program in Canada—funded by cities, banks, and tech companies. Learn DevOps, Cloud, AI & Cybersecurity with mentor-led, job-ready training. Enroll now." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root{
-      --brand-red: #E02127; /* LionTech split red */
-      --brand-blue: #1F3D8A; /* LionTech split blue */
-      --brand-dark: #0F172A;
-      --brand-text: #0B1020;
-      --brand-muted: #6B7280;
-      --bg-soft: #F8FAFC;
-      --card: #FFFFFF;
-      --accent: #10B981; /* emerald */
-      --ring: rgba(16,185,129,0.35);
-      --shadow: 0 10px 25px rgba(2,6,23,0.12);
-      --radius: 18px;
+      --brand-red:#E02127; --brand-blue:#1F3D8A; --brand-dark:#0F172A; --brand-text:#0B1020; --brand-muted:#6B7280;
+      --bg:#0b1020; --bg-soft:#F8FAFC; --card:#FFFFFF; --accent:#10B981; --ring:rgba(16,185,129,.35); --shadow:0 10px 25px rgba(2,6,23,.12); --radius:18px;
+      --grad:linear-gradient(90deg, var(--brand-red) 0%, var(--brand-red) 47%, var(--brand-blue) 47%, var(--brand-blue) 100%);
     }
-    * { box-sizing: border-box; }
-    html, body { margin: 0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color: var(--brand-text); background: var(--bg-soft); }
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    *{box-sizing:border-box}
+    html,body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--brand-text);background:var(--bg-soft)}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:1200px;margin:0 auto;padding:0 20px}
 
     /* Header */
-    header { position: sticky; top: 0; z-index: 50; background: #fff; box-shadow: 0 6px 18px rgba(2,6,23,0.06); }
-    .nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; }
-    .logo { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 20px; letter-spacing: 0.3px; }
-    .logo-badge { width: 40px; height: 40px; border-radius: 12px; background: linear-gradient(135deg, var(--brand-red), var(--brand-blue)); display: grid; place-items: center; color: #fff; font-weight: 800; }
-    .nav a { font-weight: 600; color: #0f172a; opacity: 0.9; }
-    .nav-menu { display: flex; gap: 22px; align-items: center; }
-    .cta { display: inline-flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 999px; background: var(--accent); color: #fff; font-weight: 700; box-shadow: 0 8px 18px rgba(16,185,129,0.35); }
-    .cta:hover { transform: translateY(-1px); box-shadow: 0 10px 22px rgba(16,185,129,0.45); }
+    header{position:sticky;top:0;z-index:60;background:#fff;box-shadow:0 6px 18px rgba(2,6,23,.06)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
+    .logo{display:flex;align-items:center;gap:12px;font-weight:800;font-size:20px;letter-spacing:.3px}
+    .logo-badge{width:40px;height:40px;border-radius:12px;background:var(--grad);display:grid;place-items:center;color:#fff;font-weight:800}
+    .nav-menu{display:flex;gap:22px;align-items:center}
+    .cta{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:999px;background:var(--accent);color:#fff;font-weight:800;box-shadow:0 8px 18px rgba(16,185,129,.35)}
+    .cta:hover{transform:translateY(-1px);box-shadow:0 10px 22px rgba(16,185,129,.45)}
 
     /* Hero */
-    .hero { position: relative; overflow: hidden; color: #fff; }
-    .hero-bg { background: linear-gradient(90deg, var(--brand-red) 0%, var(--brand-red) 47%, var(--brand-blue) 47%, var(--brand-blue) 100%); }
-    .hero-wrap { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 32px; padding: 64px 0; }
-    .hero h1 { font-size: clamp(28px, 5vw, 48px); line-height: 1.05; margin: 0 0 12px; font-weight: 800; }
-    .hero p { font-size: clamp(16px, 2.2vw, 18px); opacity: 0.95; margin: 0 0 22px; }
-    .hero-card { background: #ffffff12; border: 1px solid #ffffff2a; border-radius: var(--radius); padding: 18px; backdrop-filter: blur(6px); }
-    .trust { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; margin-top: 14px; }
-    .trust .pill { background: #ffffff18; border:1px solid #ffffff30; color:#fff; padding: 8px 12px; border-radius: 999px; font-weight: 600; font-size: 12px; }
+    .hero{position:relative;overflow:hidden;color:#fff;background:var(--grad)}
+    .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(1200px 320px at 70% 0%, rgba(255,255,255,.15), transparent 60%)}
+    .hero-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;padding:64px 0}
+    .hero h1{font-size:clamp(28px,5vw,48px);line-height:1.05;margin:0 0 12px;font-weight:800}
+    .hero p{font-size:clamp(16px,2.2vw,18px);opacity:.95;margin:0 0 22px}
+    .hero-card{background:#ffffff12;border:1px solid #ffffff2a;border-radius:var(--radius);padding:18px;backdrop-filter:blur(6px)}
+    .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:#ffffff18;border:1px solid #ffffff30;color:#fff;font-weight:700;font-size:12px}
+
+    /* Slider */
+    .slider{position:relative;border-radius:var(--radius);overflow:hidden;border:1px solid #e5e7eb;box-shadow:var(--shadow);height:380px}
+    .slide{position:absolute;inset:0;opacity:0;transition:opacity .6s ease}
+    .slide.active{opacity:1}
+    .slider-controls{position:absolute;bottom:12px;left:0;right:0;display:flex;justify-content:center;gap:10px}
+    .dot{width:10px;height:10px;border-radius:999px;background:#ffffff80;border:1px solid #fff;cursor:pointer}
+    .dot.active{background:#fff}
 
     /* Sections */
-    section { padding: 64px 0; }
-    h2 { font-size: clamp(22px, 3vw, 32px); margin: 0 0 14px; }
-    .sub { color: var(--brand-muted); margin: 0 0 28px; }
-
-    /* Grid & Cards */
-    .grid { display: grid; gap: 20px; }
-    @media (min-width: 900px) { .grid.cols-3 { grid-template-columns: repeat(3, 1fr); } }
-    @media (min-width: 900px) { .grid.cols-2 { grid-template-columns: repeat(2, 1fr); } }
-    .card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); border: 1px solid #e5e7eb; overflow: hidden; }
-    .card-head { padding: 20px; background: linear-gradient(135deg, rgba(224,33,39,0.1), rgba(31,61,138,0.08)); border-bottom: 1px solid #e5e7eb; }
-    .card-head h3 { margin: 0; font-size: 20px; }
-    .card-body { padding: 20px; }
-
-    /* Syllabus accordion */
-    details { border: 1px dashed #e5e7eb; border-radius: 12px; padding: 14px 16px; background: #fafafa; }
-    details summary { cursor: pointer; font-weight: 700; }
-    details[open] { background: #fff; border-style: solid; box-shadow: 0 10px 18px rgba(2,6,23,0.06); }
-    .syllabus { display: grid; gap: 10px; margin-top: 12px; }
-    .syllabus li { padding: 10px 12px; background: #f8fafc; border-radius: 10px; border: 1px solid #eef2f7; }
+    section{padding:64px 0}
+    h2{font-size:clamp(22px,3vw,32px);margin:0 0 14px}
+    .sub{color:var(--brand-muted);margin:0 0 28px}
+    .grid{display:grid;gap:20px}
+    @media(min-width:900px){.grid.cols-3{grid-template-columns:repeat(3,1fr)}.grid.cols-2{grid-template-columns:repeat(2,1fr)}}
+    .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid #e5e7eb;overflow:hidden}
+    .card-head{padding:20px;background:linear-gradient(135deg,rgba(224,33,39,.1),rgba(31,61,138,.08));border-bottom:1px solid #e5e7eb}
+    .card-head h3{margin:0;font-size:20px}
+    .card-body{padding:20px}
+    details{border:1px dashed #e5e7eb;border-radius:12px;padding:14px 16px;background:#fafafa}
+    details summary{cursor:pointer;font-weight:700}
+    details[open]{background:#fff;border-style:solid;box-shadow:0 10px 18px rgba(2,6,23,.06)}
+    .syllabus{display:grid;gap:10px;margin-top:12px}
+    .syllabus li{padding:10px 12px;background:#f8fafc;border-radius:10px;border:1px solid #eef2f7}
 
     /* People */
-    .avatar { width: 64px; height: 64px; border-radius: 999px; object-fit: cover; border: 3px solid #fff; box-shadow: var(--shadow); }
-    .person { display:flex; align-items: center; gap: 14px; }
+    .avatar{width:64px;height:64px;border-radius:999px;object-fit:cover;border:3px solid #fff;box-shadow:var(--shadow)}
+    .person{display:flex;align-items:center;gap:14px}
 
-    /* Form */
-    form { display: grid; gap: 12px; }
-    .row { display: grid; gap: 12px; }
-    @media (min-width: 700px) { .row.two { grid-template-columns: 1fr 1fr; } }
-    label { font-weight: 600; font-size: 14px; }
-    input, select, textarea { width: 100%; padding: 12px 14px; border-radius: 12px; border: 1px solid #e5e7eb; background: #fff; font: inherit; }
-    input:focus, select:focus, textarea:focus { outline: 3px solid var(--ring); border-color: var(--accent); }
-    button { cursor: pointer; border: none; }
-    .btn { display:inline-flex; align-items:center; justify-content:center; gap:10px; padding: 14px 18px; border-radius: 12px; font-weight: 800; }
-    .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 10px 18px rgba(16,185,129,0.35); }
-    .btn-ghost { background: transparent; border: 1px solid #e5e7eb; }
+    /* Pricing */
+    .price-strip{display:flex;flex-wrap:wrap;gap:16px;align-items:center;background:#fff;border:1px solid #e5e7eb;border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+    .price-tag{font-weight:800;font-size:28px}
+    .strike{color:#64748b;text-decoration:line-through}
+    .save{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;background:#ECFDF5;color:#065F46;border:1px solid #A7F3D0;font-size:12px;font-weight:800}
+
+    /* Countdown */
+    .countdown{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+    .timer{display:grid;place-items:center;width:90px;height:90px;border-radius:16px;background:#fff;border:1px solid #e5e7eb;box-shadow:var(--shadow)}
+    .timer strong{font-size:24px}
+    .timer span{font-size:12px;color:#64748b}
 
     /* Footer */
-    footer { background: #0b1020; color: #cbd5e1; padding: 40px 0; }
-    footer a { color: #e2e8f0; }
+    footer{background:#0b1020;color:#cbd5e1;padding:40px 0}
+    footer a{color:#e2e8f0}
 
     /* Utility */
-    .mt-8 { margin-top: 32px; }
-    .mt-4 { margin-top: 16px; }
-    .mb-2 { margin-bottom: 8px; }
-    .center { text-align:center; }
+    .mt-8{margin-top:32px}.mt-4{margin-top:16px}.mb-2{margin-bottom:8px}.center{text-align:center}
+    .ribbon{display:flex;justify-content:center;align-items:center;gap:10px;padding:10px 16px;background:#111827;color:#fff;font-weight:800}
   </style>
 </head>
 <body>
+  <!-- Ribbon: Pilot announcement -->
+  <div class="ribbon" role="status" aria-live="polite">
+    <span>🚀 LionTech Pilot Program</span>
+    <span>Funded by Canadian cities, banks & tech companies</span>
+  </div>
+
   <!-- Header -->
   <header role="banner" aria-label="Site Navigation">
     <div class="container nav">
@@ -115,296 +112,254 @@
   </header>
 
   <!-- Hero -->
-  <section class="hero hero-bg" id="top">
+  <section class="hero" id="top">
     <div class="container hero-wrap">
       <div>
         <div class="hero-card">
-          <h1>Build in-demand skills in <span aria-label="DevOps">DevOps</span>, <span aria-label="Cloud">Cloud</span>, <span aria-label="AI">AI</span> & <span aria-label="Cybersecurity">Cybersecurity</span>.</h1>
-          <p>Hands-on, career-focused training designed to help you ship real projects and get hired faster. Join live classes, learn from industry engineers, and graduate with portfolio-ready work.</p>
-          <div class="trust">
-            <span class="pill">Live & Online</span>
-            <span class="pill">Beginner–Intermediate</span>
-            <span class="pill">Mentor Support</span>
-            <span class="pill">Career Coaching</span>
-          </div>
-          <div class="mt-8">
-            <a class="btn btn-primary" href="#enroll">Start Your Application</a>
-            <a class="btn btn-ghost" href="#programs">Explore Programs</a>
+          <h1>Get job‑ready skills in <span aria-label="DevOps">DevOps</span>, <span aria-label="Cloud">Cloud</span>, <span aria-label="AI">AI</span> & <span aria-label="Cybersecurity">Cybersecurity</span>.</h1>
+          <p>Join our Canada‑backed pilot cohort with heavy partner funding. Learn live from industry engineers, build portfolio projects, and graduate with confidence.</p>
+          <div class="pill">Next cohort starts <strong>Jan 10, 2026</strong> · Saturdays <strong>9–11 AM EST</strong></div>
+          <div class="mt-8 countdown" id="countdown" aria-label="Countdown to next cohort">
+            <div class="timer"><strong id="d">00</strong><span>Days</span></div>
+            <div class="timer"><strong id="h">00</strong><span>Hours</span></div>
+            <div class="timer"><strong id="m">00</strong><span>Minutes</span></div>
+            <div class="timer"><strong id="s">00</strong><span>Seconds</span></div>
+            <a class="cta" href="#enroll">Apply before seats fill</a>
           </div>
         </div>
-        <div class="mt-8" aria-live="polite">
-          <div class="card" style="display:flex; gap:16px; align-items:center;">
-            <div>
-              <div class="btn btn-ghost" style="font-weight:800;">Next Cohort</div>
-              <div class="mt-4"><strong>AI for Entrepreneurs & Innovators</strong> — Starts <strong>Jan 10, 2026</strong> · Saturdays <strong>9–11 AM EST</strong></div>
-            </div>
-            <a class="btn btn-primary" href="#enroll" aria-label="Enroll in AI for Entrepreneurs & Innovators">Enroll</a>
+        <div class="price-strip mt-8" role="group" aria-label="Pilot pricing">
+          <div>
+            <div class="sub">Original tuition (all programs)</div>
+            <div class="price-tag strike">CAD $3,500</div>
           </div>
+          <div>
+            <div class="sub">Pilot Tuition</div>
+            <div class="price-tag">CAD $1,500</div>
+          </div>
+          <div>
+            <div class="sub">Partner pays</div>
+            <div class="price-tag">CAD $2,500</div>
+          </div>
+          <div>
+            <div class="sub">Student pays</div>
+            <div class="price-tag">CAD $1,000</div>
+          </div>
+          <div class="save">~71% funded for you</div>
         </div>
       </div>
+
+      <!-- Slider -->
       <div>
-        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop" alt="Students collaborating in an online tech class" style="border-radius: var(--radius); box-shadow: var(--shadow); border: 1px solid #e5e7eb;"/>
+        <div class="slider" id="slider">
+          <img class="slide active" src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1400&auto=format&fit=crop" alt="Cohort collaborating live on projects"/>
+          <img class="slide" src="https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=1400&auto=format&fit=crop" alt="Student presenting a project"/>
+          <img class="slide" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1400&auto=format&fit=crop" alt="Small group mentorship"/>
+          <div class="slider-controls" id="dots"></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Programs -->
+  <!-- Selling points -->
+  <section id="outcomes">
+    <div class="container">
+      <h2>Built to convert learning into outcomes</h2>
+      <p class="sub">Practical curriculum • Mentor feedback • Career support • Real capstone projects</p>
+      <div class="grid cols-4">
+        <div class="card"><div class="card-body"><h3>Hands‑on Labs</h3><p class="sub">Deploy, automate, and secure real environments—not just slides.</p></div></div>
+        <div class="card"><div class="card-body"><h3>Industry Mentors</h3><p class="sub">Weekly Q&A, reviews, and 1:1 guidance from practitioners.</p></div></div>
+        <div class="card"><div class="card-body"><h3>Career Boost</h3><p class="sub">Resume polish, LinkedIn, mock interviews & job strategy.</p></div></div>
+        <div class="card"><div class="card-body"><h3>Flexible & Live</h3><p class="sub">Weekend sessions with recordings and lifelong community.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Programs (with syllabi) -->
   <section id="programs">
     <div class="container">
       <h2>Programs</h2>
-      <p class="sub">Choose a track and open the syllabus to see everything covered.</p>
-
+      <p class="sub">Open the syllabus to see everything covered across each track.</p>
       <div class="grid cols-2">
         <!-- DevOps -->
         <article class="card" id="devops">
           <div class="card-head"><h3>DevOps Training</h3></div>
           <div class="card-body">
-            <p class="mb-2">Master modern software delivery: CI/CD, containers, Kubernetes, and infrastructure as code.</p>
-            <details>
-              <summary>View syllabus</summary>
+            <p class="mb-2">Master CI/CD, containers, Kubernetes, and infrastructure as code for modern delivery.</p>
+            <details><summary>View syllabus</summary>
               <ol class="syllabus">
-                <li>Linux & Shell Essentials, Git & GitHub workflow</li>
-                <li>Continuous Integration with GitHub Actions/Jenkins</li>
-                <li>Containers with Docker, images, registries, Compose</li>
-                <li>Kubernetes fundamentals: pods, deployments, services, Helm</li>
-                <li>Infrastructure as Code: Terraform basics to modules</li>
-                <li>Config management with Ansible; secrets & vault</li>
-                <li>Observability: logs, metrics, tracing (Prometheus/Grafana)</li>
-                <li>Cloud deployments (AWS/Azure); networking & security</li>
-                <li>DevSecOps: SAST/DAST, supply chain security</li>
-                <li>Capstone: production‑grade CI/CD pipeline to Kubernetes</li>
+                <li>Linux & Shell • Git & GitHub Flow</li>
+                <li>CI with GitHub Actions/Jenkins</li>
+                <li>Docker • Images • Compose</li>
+                <li>Kubernetes • Deployments • Services • Helm</li>
+                <li>Terraform IaC • Modules</li>
+                <li>Ansible • Secrets/Vault</li>
+                <li>Observability (Prometheus/Grafana)</li>
+                <li>Cloud Deployments (AWS/Azure) & Security</li>
+                <li>DevSecOps (SAST/DAST)</li>
+                <li>Capstone: Prod‑grade CI/CD → K8s</li>
               </ol>
             </details>
-            <div class="price-strip mt-4" role="group" aria-label="DevOps pricing and schedule">
-              <div>
-                <div><strong>Next Start:</strong> Jan 11, 2026</div>
-                <div class="sub">Sundays · 9:00–12:00 EST · 8 weeks</div>
-              </div>
-              <div class="price-tag">$1,200 USD</div>
-              <a class="btn btn-primary" href="#enroll">Enroll</a>
-            </div>
           </div>
         </article>
-
-        <!-- Cloud Computing -->
+        <!-- Cloud -->
         <article class="card" id="cloud">
           <div class="card-head"><h3>Cloud Computing Training</h3></div>
           <div class="card-body">
-            <p class="mb-2">Design, build, and operate in the cloud with AWS/Azure/GCP foundations.</p>
-            <details>
-              <summary>View syllabus</summary>
+            <p class="mb-2">Design and operate resilient architectures across AWS/Azure/GCP.</p>
+            <details><summary>View syllabus</summary>
               <ol class="syllabus">
-                <li>Cloud fundamentals: shared responsibility, regions, pricing</li>
-                <li>AWS core: IAM, VPC, EC2, S3, RDS, Auto Scaling, ELB</li>
-                <li>Azure core: Identity, VNets, VMs, Storage, Databases</li>
-                <li>GCP core: Projects, IAM, Compute, Storage, Cloud SQL</li>
-                <li>Serverless: Lambda/Functions, API Gateway, Eventing</li>
-                <li>Containers in cloud: EKS/AKS/GKE basics</li>
-                <li>Infrastructure as Code: CloudFormation & Terraform</li>
-                <li>Security & compliance: IAM policies, encryption, logging</li>
-                <li>Cost optimization & monitoring</li>
-                <li>Capstone: design a resilient multi-tier cloud architecture</li>
+                <li>Cloud Basics • Regions • Pricing</li>
+                <li>AWS Core: IAM • VPC • EC2 • S3 • RDS • ELB</li>
+                <li>Azure Core: Identity • VNets • VMs • Storage</li>
+                <li>GCP Core: Projects • IAM • Compute • Storage</li>
+                <li>Serverless: Lambda/Functions • API GW</li>
+                <li>Containers: EKS/AKS/GKE</li>
+                <li>IaC: CloudFormation & Terraform</li>
+                <li>Security • Logging • Encryption</li>
+                <li>Cost Optimization • Monitoring</li>
+                <li>Capstone: Multi‑tier Cloud Design</li>
               </ol>
             </details>
-            <div class="price-strip mt-4" role="group" aria-label="Cloud pricing and schedule">
-              <div>
-                <div><strong>Next Start:</strong> Jan 14, 2026</div>
-                <div class="sub">Wednesdays · 6:00–8:00 PM EST · 8 weeks</div>
-              </div>
-              <div class="price-tag">$1,100 USD</div>
-              <a class="btn btn-primary" href="#enroll">Enroll</a>
-            </div>
           </div>
         </article>
-
-        <!-- AI for Entrepreneurs & Innovators -->
+        <!-- AI -->
         <article class="card" id="ai-entrepreneurs">
           <div class="card-head"><h3>AI for Entrepreneurs & Innovators</h3></div>
           <div class="card-body">
             <p class="mb-2">Discover, prototype, and launch AI‑powered products and automations.</p>
-            <details>
-              <summary>View syllabus</summary>
+            <details><summary>View syllabus</summary>
               <ol class="syllabus">
-                <li>AI landscape, opportunities, and responsible innovation</li>
-                <li>Prompting & workflows for research, copy, and design</li>
-                <li>No‑code AI tools for web, data, and customer ops</li>
-                <li>Automation: Zapier/Make, agents, and API integration</li>
-                <li>LLM product prototyping (hosted models & APIs)</li>
-                <li>Data basics: collection, cleaning, and evaluation</li>
-                <li>UX for AI products: guardrails, transparency, feedback</li>
-                <li>Compliance & ethics: privacy, terms, and policy</li>
-                <li>Monetization & go‑to‑market: pricing, funnels, ads</li>
-                <li>Demo day: pitch and ship your AI MVP</li>
+                <li>AI landscape & opportunity</li>
+                <li>Prompting & research workflows</li>
+                <li>No‑code AI for web/data</li>
+                <li>Automation (Zapier/Make) & APIs</li>
+                <li>LLM prototyping & evaluation</li>
+                <li>Data basics • Cleaning • Metrics</li>
+                <li>UX & Guardrails • Feedback</li>
+                <li>Compliance • Privacy</li>
+                <li>Monetization & GTM</li>
+                <li>Demo Day: Pitch + Ship MVP</li>
               </ol>
             </details>
-            <div class="price-strip mt-4" role="group" aria-label="AI pricing and schedule">
-              <div>
-                <div><strong>Next Start:</strong> Jan 10, 2026</div>
-                <div class="sub">Saturdays · 9:00–11:00 AM EST · 8 weeks</div>
-              </div>
-              <div class="price-tag">$900 USD</div>
-              <a class="btn btn-primary" href="#enroll">Enroll</a>
-            </div>
           </div>
         </article>
-
-        <!-- Cyber Security -->
+        <!-- Cyber -->
         <article class="card" id="cyber">
           <div class="card-head"><h3>Cyber Security</h3></div>
           <div class="card-body">
-            <p class="mb-2">Build a security foundation: networks, cloud, detection, and response.</p>
-            <details>
-              <summary>View syllabus</summary>
+            <p class="mb-2">Build a strong security foundation for networks, cloud, and applications.</p>
+            <details><summary>View syllabus</summary>
               <ol class="syllabus">
-                <li>Security fundamentals & threat modeling</li>
-                <li>Network security: firewalls, IDS/IPS, zero trust</li>
-                <li>Operating system hardening & endpoint security</li>
-                <li>Identity & access management; SSO/MFA</li>
-                <li>Cloud security essentials (AWS/Azure/GCP)</li>
-                <li>Monitoring & SIEM (Elastic/Splunk) and alert tuning</li>
-                <li>Incident response and forensics</li>
-                <li>Vulnerability management & pen‑testing basics</li>
-                <li>Compliance: SOC 2, ISO 27001, GDPR overview</li>
-                <li>Capstone: design a small‑biz security program</li>
+                <li>Threat Modeling • Security Basics</li>
+                <li>Network Security • Zero Trust</li>
+                <li>OS Hardening • Endpoint</li>
+                <li>IAM • SSO/MFA</li>
+                <li>Cloud Security (AWS/Azure/GCP)</li>
+                <li>SIEM (Elastic/Splunk) • Detection</li>
+                <li>Incident Response • Forensics</li>
+                <li>Vuln Mgmt • Pen‑testing Basics</li>
+                <li>Compliance: SOC2 • ISO 27001 • GDPR</li>
+                <li>Capstone: Small‑biz Sec Program</li>
               </ol>
             </details>
-            <div class="price-strip mt-4" role="group" aria-label="Cyber pricing and schedule">
-              <div>
-                <div><strong>Next Start:</strong> Jan 13, 2026</div>
-                <div class="sub">Tuesdays · 6:00–8:00 PM EST · 8 weeks</div>
-              </div>
-              <div class="price-tag">$1,000 USD</div>
-              <a class="btn btn-primary" href="#enroll">Enroll</a>
-            </div>
           </div>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- Students gallery / social proof -->
+  <!-- Students: gallery + testimonials -->
   <section id="students">
     <div class="container">
-      <h2>Our Students</h2>
-      <p class="sub">Real people. Real outcomes. Join a global community leveling up their careers.</p>
+      <h2>Students in Action</h2>
+      <p class="sub">Real people, real outcomes. Join a supportive community.</p>
       <div class="grid cols-3">
         <div class="card"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop" alt="Student smiling at laptop"/></div>
         <div class="card"><img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=800&auto=format&fit=crop" alt="Group of students collaborating"/></div>
         <div class="card"><img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=800&auto=format&fit=crop" alt="Student presenting project"/></div>
       </div>
       <div class="grid cols-3 mt-8">
-        <div class="card"><div class="card-body person"><img class="avatar" src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?q=80&w=256&auto=format&fit=crop" alt="Portrait of Amina"/><div><strong>Amina • DevOps Graduate</strong><p class="sub">“The Kubernetes labs and CI/CD pipeline project helped me land my first DevOps role.”</p></div></div></div>
-        <div class="card"><div class="card-body person"><img class="avatar" src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=256&auto=format&fit=crop" alt="Portrait of Daniel"/><div><strong>Daniel • Cloud Graduate</strong><p class="sub">“I designed a resilient AWS architecture for my capstone—now I do it at work.”</p></div></div></div>
-        <div class="card"><div class="card-body person"><img class="avatar" src="https://images.unsplash.com/photo-1541534401786-2077eed87a75?q=80&w=256&auto=format&fit=crop" alt="Portrait of Priya"/><div><strong>Priya • AI Graduate</strong><p class="sub">“Built an AI MVP in 4 weeks and signed my first paying customers.”</p></div></div></div>
+        <div class="card"><div class="card-body person"><img class="avatar" src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?q=80&w=256&auto=format&fit=crop" alt="Portrait of Amina"/><div><strong>Amina • DevOps Grad</strong><p class="sub">“The CI/CD + Kubernetes capstone helped me land my first DevOps role.”</p></div></div></div>
+        <div class="card"><div class="card-body person"><img class="avatar" src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=256&auto=format&fit=crop" alt="Portrait of Daniel"/><div><strong>Daniel • Cloud Grad</strong><p class="sub">“I designed a resilient AWS architecture for my capstone—now I do it at work.”</p></div></div></div>
+        <div class="card"><div class="card-body person"><img class="avatar" src="https://images.unsplash.com/photo-1541534401786-2077eed87a75?q=80&w=256&auto=format&fit=crop" alt="Portrait of Priya"/><div><strong>Priya • AI Grad</strong><p class="sub">“Built an AI MVP in 4 weeks and signed my first paying customers.”</p></div></div></div>
       </div>
     </div>
   </section>
 
-  <!-- Lecturers / Instructors -->
+  <!-- Lecturers -->
   <section id="lecturers">
     <div class="container">
       <h2>Meet the Lecturers</h2>
-      <p class="sub">Practitioners from industry—bringing real projects and current best practices.</p>
+      <p class="sub">Practitioners from industry—bringing current best practices and real projects.</p>
       <div class="grid cols-3">
-        <div class="card"><div class="card-body"><div class="person"><img class="avatar" src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?q=80&w=256&auto=format&fit=crop" alt="Lecturer: Sarah Kim"/><div><strong>Sarah Kim</strong><p class="sub">Sr. DevOps Engineer @ SaaSCo</p><p class="sub">Kubernetes • Terraform • GitHub Actions • SRE</p></div></div></div></div>
-        <div class="card"><div class="card-body"><div class="person"><img class="avatar" src="https://images.unsplash.com/photo-1542326237-94b1c5a538d9?q=80&w=256&auto=format&fit=crop" alt="Lecturer: Miguel Alvarez"/><div><strong>Miguel Alvarez</strong><p class="sub">Cloud Solutions Architect</p><p class="sub">AWS Well‑Architected • Cost Optimization • Landing Zones</p></div></div></div></div>
-        <div class="card"><div class="card-body"><div class="person"><img class="avatar" src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=256&auto=format&fit=crop" alt="Lecturer: Jade Nwosu"/><div><strong>Jade Nwosu</strong><p class="sub">AI Product Lead</p><p class="sub">LLM Apps • Prompting • Automation • Responsible AI</p></div></div></div></div>
+        <div class="card"><div class="card-body"><div class="person"><img class="avatar" src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?q=80&w=256&auto=format&fit=crop" alt="Lecturer: Sarah Kim"/><div><strong>Sarah Kim</strong><p class="sub">Sr. DevOps Engineer • Kubernetes • Terraform • SRE</p></div></div></div></div>
+        <div class="card"><div class="card-body"><div class="person"><img class="avatar" src="https://images.unsplash.com/photo-1542326237-94b1c5a538d9?q=80&w=256&auto=format&fit=crop" alt="Lecturer: Miguel Alvarez"/><div><strong>Miguel Alvarez</strong><p class="sub">Cloud Architect • AWS Well‑Architected • Cost Optimization</p></div></div></div></div>
+        <div class="card"><div class="card-body"><div class="person"><img class="avatar" src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=256&auto=format&fit=crop" alt="Lecturer: Jade Nwosu"/><div><strong>Jade Nwosu</strong><p class="sub">AI Product Lead • LLM apps • Automation • Responsible AI</p></div></div></div></div>
       </div>
-      <div class="grid cols-3 mt-8">
-        <div class="card"><div class="card-body"><div class="person"><img class="avatar" src="https://images.unsplash.com/photo-1544006659-f0b21884ce1d?q=80&w=256&auto=format&fit=crop" alt="Lecturer: Colin Wright"/><div><strong>Colin Wright</strong><p class="sub">Security Engineer</p><p class="sub">Cloud Security • SIEM • Incident Response</p></div></div></div></div>
-        <div class="card"><div class="card-body"><div class="person"><img class="avatar" src="https://images.unsplash.com/photo-1554151228-14d9def656e4?q=80&w=256&auto=format&fit=crop" alt="Lecturer: Hana Lee"/><div><strong>Hana Lee</strong><p class="sub">UX for AI Specialist</p><p class="sub">Human‑Centered AI • Product Discovery • Guardrails</p></div></div></div></div>
-        <div class="card"><div class="card-body"><div class="person"><img class="avatar" src="https://images.unsplash.com/photo-1545996124-0501ebae84d5?q=80&w=256&auto=format&fit=crop" alt="Lecturer: Victor Ade"/><div><strong>Victor Ade</strong><p class="sub">Platform Engineer</p><p class="sub">Observability • Reliability • Performance</p></div></div></div></div>
-      </div>
-      <p class="sub mt-8">Want your team featured here? Send headshots (1:1 square, 512×512+) and short bios to <a href="mailto:admissions@liontechacademy.com">admissions@liontechacademy.com</a>.</p>
     </div>
   </section>
 
-  <!-- Lectures / Schedule (example for AI cohort) -->
+  <!-- Lectures / Schedule (AI cohort example) -->
   <section id="lectures">
     <div class="container">
       <h2>Lecture Schedule — AI for Entrepreneurs & Innovators</h2>
       <p class="sub">Starts <strong>January 10, 2026</strong> · Saturdays <strong>9–11 AM EST</strong> · 8 weeks</p>
-      <div class="card">
-        <div class="card-body">
-          <ol class="syllabus">
-            <li>Week 1 (Jan 10): AI landscape, opportunities & responsible innovation</li>
-            <li>Week 2 (Jan 17): Prompting & research workflows</li>
-            <li>Week 3 (Jan 24): No‑code tools for web & data</li>
-            <li>Week 4 (Jan 31): Automation with Zapier/Make & APIs</li>
-            <li>Week 5 (Feb 7): LLM product prototyping</li>
-            <li>Week 6 (Feb 14): Data prep & evaluation</li>
-            <li>Week 7 (Feb 21): UX for AI, guardrails & feedback</li>
-            <li>Week 8 (Feb 28): Monetization, GTM & Demo day</li>
-          </ol>
-        </div>
-      </div>
+      <div class="card"><div class="card-body">
+        <ol class="syllabus">
+          <li>Week 1 (Jan 10): AI landscape, opportunities & responsible innovation</li>
+          <li>Week 2 (Jan 17): Prompting & research workflows</li>
+          <li>Week 3 (Jan 24): No‑code tools for web & data</li>
+          <li>Week 4 (Jan 31): Automation with Zapier/Make & APIs</li>
+          <li>Week 5 (Feb 7): LLM product prototyping</li>
+          <li>Week 6 (Feb 14): Data prep & evaluation</li>
+          <li>Week 7 (Feb 21): UX for AI, guardrails & feedback</li>
+          <li>Week 8 (Feb 28): Monetization, GTM & Demo day</li>
+        </ol>
+      </div></div>
     </div>
   </section>
 
-  <!-- Enrollment form (Formspree) -->
+  <!-- Enrollment (Formspree) -->
   <section id="enroll">
     <div class="container">
       <h2>Apply now</h2>
-      <p class="sub">Tell us a bit about you. A LionTech advisor will reach out with next steps.</p>
+      <p class="sub">Tell us about you. An advisor will reach out with next steps.</p>
       <div class="grid cols-2">
-        <div class="card">
-          <div class="card-body">
-            <form action="https://formspree.io/f/xzzklnzz" method="POST" aria-label="Application form">
-              <!-- Formspree helpers -->
-              <input type="hidden" name="_subject" value="New LionTech Application" />
-              <input type="hidden" name="_captcha" value="false" />
-              <input type="hidden" name="_next" value="#thank-you" />
-              <!-- Honeypot -->
-              <label class="hidden">Do not fill this out if you're human: <input name="_gotcha"></label>
-
-              <div class="row two">
-                <div>
-                  <label for="name">Full name</label>
-                  <input id="name" name="name" required placeholder="Jane Doe" />
-                </div>
-                <div>
-                  <label for="email">Email</label>
-                  <input id="email" name="email" type="email" required placeholder="you@example.com" />
-                </div>
-              </div>
-              <div class="row two">
-                <div>
-                  <label for="phone">Phone / WhatsApp</label>
-                  <input id="phone" name="phone" placeholder="+1 647 381 8836" />
-                </div>
-                <div>
-                  <label for="program">Program</label>
-                  <select id="program" name="program" required>
-                    <option value="">Select a program…</option>
-                    <option>DevOps Training</option>
-                    <option>Cloud Computing Training</option>
-                    <option>AI for Entrepreneurs & Innovators</option>
-                    <option>Cyber Security</option>
-                  </select>
-                </div>
-              </div>
-              <div>
-                <label for="notes">What’s your goal?</label>
-                <textarea id="notes" name="message" rows="4" placeholder="Tell us what you want to achieve…"></textarea>
-              </div>
-              <button class="btn btn-primary" type="submit">Submit application</button>
-              <p class="sub">By submitting, you agree to be contacted about your application.</p>
-            </form>
-          </div>
-        </div>
-        <div>
-          <div class="card">
-            <div class="card-head"><h3>Need help deciding?</h3></div>
-            <div class="card-body">
-              <p>Book a 15‑minute call with an advisor to find the right path and get your questions answered.</p>
-              <a class="btn btn-ghost" href="#contact">Contact us</a>
-              <ul class="syllabus mt-4">
-                <li><strong>Flexible payments:</strong> ask about installment options.</li>
-                <li><strong>Certificates:</strong> earn a LionTech completion certificate.</li>
-                <li><strong>Alumni community:</strong> access job leads and events.</li>
-              </ul>
+        <div class="card"><div class="card-body">
+          <form action="https://formspree.io/f/xzzklnzz" method="POST" aria-label="Application form">
+            <input type="hidden" name="_subject" value="New LionTech Application" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_next" value="#thank-you" />
+            <label class="hidden">Do not fill this out if you're human: <input name="_gotcha"></label>
+            <div class="grid cols-2">
+              <label>Full name<input name="name" required placeholder="Jane Doe" /></label>
+              <label>Email<input name="email" type="email" required placeholder="you@example.com" /></label>
             </div>
-          </div>
+            <div class="grid cols-2">
+              <label>Phone / WhatsApp<input name="phone" placeholder="+1 647 381 8836" /></label>
+              <label>Program<select name="program" required>
+                <option value="">Select…</option>
+                <option>DevOps Training</option>
+                <option>Cloud Computing Training</option>
+                <option>AI for Entrepreneurs & Innovators</option>
+                <option>Cyber Security</option>
+              </select></label>
+            </div>
+            <label>Your message<textarea name="message" rows="4" placeholder="Tell us what you want to achieve…"></textarea></label>
+            <button class="cta" type="submit">Submit application</button>
+            <p class="sub">By submitting, you agree to be contacted about your application.</p>
+          </form>
+        </div></div>
+        <div>
+          <div class="card"><div class="card-head"><h3>Funding at a glance</h3></div><div class="card-body">
+            <div class="grid">
+              <div class="price-strip"><div><div class="sub">Original Tuition</div><div class="price-tag strike">CAD $3,500</div></div></div>
+              <div class="price-strip"><div><div class="sub">Pilot Tuition</div><div class="price-tag">CAD $1,500</div></div></div>
+              <div class="price-strip"><div><div class="sub">Partner Pays</div><div class="price-tag">CAD $2,500</div></div></div>
+              <div class="price-strip"><div><div class="sub">Student Pays</div><div class="price-tag">CAD $1,000</div></div><div class="save">Your out‑of‑pocket</div></div>
+            </div>
+            <p class="sub mt-4">Limited pilot seats available. Eligibility varies by city and partner.</p>
+          </div></div>
         </div>
       </div>
     </div>
@@ -414,52 +369,72 @@
   <section id="contact">
     <div class="container">
       <h2>Contact LionTech</h2>
-      <p class="sub">We’re here to help you enroll or choose the right track.</p>
+      <p class="sub">We’re here to help you choose the right track and secure funding.</p>
       <div class="grid cols-3">
-        <div class="card"><div class="card-body">
-          <h4 class="mb-2">Phone / WhatsApp</h4>
-          <p><a href="https://wa.me/16473818836" aria-label="Chat on WhatsApp">+1 (647) 381‑8836</a></p>
-        </div></div>
-        <div class="card"><div class="card-body">
-          <h4 class="mb-2">Email</h4>
-          <p><a href="mailto:admissions@liontechacademy.com">admissions@liontechacademy.com</a></p>
-        </div></div>
-        <div class="card"><div class="card-body">
-          <h4 class="mb-2">Location</h4>
-          <p>Toronto, ON, Canada</p>
-          <p class="sub">Live online classes available worldwide</p>
-        </div></div>
+        <div class="card"><div class="card-body"><h4 class="mb-2">Phone / WhatsApp</h4><p><a href="https://wa.me/16473818836">+1 (647) 381‑8836</a></p></div></div>
+        <div class="card"><div class="card-body"><h4 class="mb-2">Email</h4><p><a href="mailto:admissions@liontechacademy.com">admissions@liontechacademy.com</a></p></div></div>
+        <div class="card"><div class="card-body"><h4 class="mb-2">Location</h4><p>Toronto, ON, Canada</p><p class="sub">Live online classes available worldwide</p></div></div>
       </div>
     </div>
   </section>
 
-  <!-- Thank you anchor (Formspree redirect target) -->
+  <!-- Thank you anchor -->
   <section id="thank-you" class="center">
-    <div class="container">
-      <div class="card">
-        <div class="card-body">
-          <h2>Thank you! 🎉</h2>
-          <p class="sub">Your application was submitted. Our admissions team will reach out shortly.</p>
-          <a class="btn btn-primary" href="#top">Back to top</a>
-        </div>
-      </div>
-    </div>
+    <div class="container"><div class="card"><div class="card-body"><h2>Thank you! 🎉</h2><p class="sub">Your application was submitted. Our admissions team will reach out shortly.</p><a class="cta" href="#top">Back to top</a></div></div></div>
   </section>
 
   <footer role="contentinfo">
-    <div class="container" style="display:grid; gap: 18px;">
-      <div style="display:flex; align-items:center; gap: 12px;">
-        <div class="logo-badge" aria-hidden="true">LT</div>
-        <strong>LIONTECH ACADEMY</strong>
-      </div>
-      <div style="font-size: 14px; color:#94a3b8;">
-        © <span id="year"></span> LionTech Academy. All rights reserved.
-      </div>
+    <div class="container" style="display:grid;gap:18px">
+      <div style="display:flex;align-items:center;gap:12px"><div class="logo-badge" aria-hidden="true">LT</div><strong>LIONTECH ACADEMY</strong></div>
+      <div style="font-size:14px;color:#94a3b8">© <span id="year"></span> LionTech Academy. All rights reserved.</div>
     </div>
   </footer>
 
   <script>
+    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Countdown to Jan 10, 2026 09:00 America/Toronto (EST)
+    const tzOffset = -5 * 60; // EST offset in minutes (no DST considered here)
+    const target = new Date('2026-01-10T14:00:00Z'); // 09:00 EST = 14:00 UTC
+    function tick(){
+      const now = new Date();
+      const diff = target - now;
+      const d = Math.max(0, Math.floor(diff / (1000*60*60*24)));
+      const h = Math.max(0, Math.floor((diff / (1000*60*60)) % 24));
+      const m = Math.max(0, Math.floor((diff / (1000*60)) % 60));
+      const s = Math.max(0, Math.floor((diff / 1000) % 60));
+      document.getElementById('d').textContent = String(d).padStart(2,'0');
+      document.getElementById('h').textContent = String(h).padStart(2,'0');
+      document.getElementById('m').textContent = String(m).padStart(2,'0');
+      document.getElementById('s').textContent = String(s).padStart(2,'0');
+    }
+    tick(); setInterval(tick, 1000);
+
+    // Simple slider
+    const slides = Array.from(document.querySelectorAll('#slider .slide'));
+    const dotsWrap = document.getElementById('dots');
+    let idx = 0; let timer;
+    function renderDots(){
+      dotsWrap.innerHTML = '';
+      slides.forEach((_,i)=>{
+        const b = document.createElement('button');
+        b.className = 'dot' + (i===idx?' active':'');
+        b.setAttribute('aria-label', 'Go to slide ' + (i+1));
+        b.addEventListener('click', ()=>{go(i)});
+        dotsWrap.appendChild(b);
+      });
+    }
+    function go(i){
+      slides[idx].classList.remove('active');
+      idx = (i+slides.length)%slides.length;
+      slides[idx].classList.add('active');
+      renderDots();
+      reset();
+    }
+    function next(){ go(idx+1); }
+    function reset(){ clearInterval(timer); timer = setInterval(next, 4500); }
+    renderDots(); reset();
   </script>
 </body>
 </html>
