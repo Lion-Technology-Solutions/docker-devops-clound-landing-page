@@ -119,11 +119,11 @@
           <h1>Get job‑ready skills in <span aria-label="DevOps">DevOps</span>, <span aria-label="Cloud">Cloud</span>, <span aria-label="AI">AI</span> & <span aria-label="Cybersecurity">Cybersecurity</span>.</h1>
           <p>Join our Canada‑backed pilot cohort with heavy partner funding. Learn live from industry engineers, build portfolio projects, and graduate with confidence.</p>
           <div class="pill">Next cohort starts <strong>Jan 10, 2026</strong> · Saturdays <strong>9–11 AM EST</strong></div>
-          <div class="mt-8 countdown" id="countdown" aria-label="Countdown to next cohort">
-            <div class="timer"><strong id="d">00</strong><span>Days</span></div>
-            <div class="timer"><strong id="h">00</strong><span>Hours</span></div>
-            <div class="timer"><strong id="m">00</strong><span>Minutes</span></div>
-            <div class="timer"><strong id="s">00</strong><span>Seconds</span></div>
+          <div class="mt-8 countdown" id="countdown" aria-label="Countdown to next cohort" role="timer" aria-live="polite">
+            <div class="timer" aria-label="Days remaining"><strong id="d">00</strong><span>Days</span></div>
+            <div class="timer" aria-label="Hours remaining"><strong id="h">00</strong><span>Hours</span></div>
+            <div class="timer" aria-label="Minutes remaining"><strong id="m">00</strong><span>Minutes</span></div>
+            <div class="timer" aria-label="Seconds remaining"><strong id="s">00</strong><span>Seconds</span></div>
             <a class="cta" href="#enroll">Apply before seats fill</a>
           </div>
         </div>
@@ -326,28 +326,46 @@
       <p class="sub">Tell us about you. An advisor will reach out with next steps.</p>
       <div class="grid cols-2">
         <div class="card"><div class="card-body">
-          <form action="https://formspree.io/f/xzzklnzz" method="POST" aria-label="Application form">
+          <form id="applyForm" action="https://formspree.io/f/xzzklnzz" method="POST" aria-label="Application form" novalidate>
             <input type="hidden" name="_subject" value="New LionTech Application" />
             <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_next" value="#thank-you" />
+            <input type="hidden" name="source" value="Landing Page" />
             <label class="hidden">Do not fill this out if you're human: <input name="_gotcha"></label>
+
             <div class="grid cols-2">
-              <label>Full name<input name="name" required placeholder="Jane Doe" /></label>
-              <label>Email<input name="email" type="email" required placeholder="you@example.com" /></label>
+              <label>Full name
+                <input name="name" required placeholder="Jane Doe" autocomplete="name" />
+              </label>
+              <label>Email
+                <input name="email" type="email" required placeholder="you@example.com" autocomplete="email" />
+              </label>
             </div>
             <div class="grid cols-2">
-              <label>Phone / WhatsApp<input name="phone" placeholder="+1 647 381 8836" /></label>
-              <label>Program<select name="program" required>
-                <option value="">Select…</option>
-                <option>DevOps Training</option>
-                <option>Cloud Computing Training</option>
-                <option>AI for Entrepreneurs & Innovators</option>
-                <option>Cyber Security</option>
-              </select></label>
+              <label>Phone / WhatsApp
+                <input name="phone" inputmode="tel" placeholder="+1 647 381 8836" autocomplete="tel" />
+              </label>
+              <label>Program
+                <select name="program" required>
+                  <option value="">Select…</option>
+                  <option>DevOps Training</option>
+                  <option>Cloud Computing Training</option>
+                  <option>AI for Entrepreneurs & Innovators</option>
+                  <option>Cyber Security</option>
+                </select>
+              </label>
             </div>
-            <label>Your message<textarea name="message" rows="4" placeholder="Tell us what you want to achieve…"></textarea></label>
-            <button class="cta" type="submit">Submit application</button>
-            <p class="sub">By submitting, you agree to be contacted about your application.</p>
+            <label>City (for pilot eligibility)
+              <input name="city" placeholder="Toronto" />
+            </label>
+            <label>Your message
+              <textarea name="message" rows="4" placeholder="Tell us what you want to achieve…"></textarea>
+            </label>
+            <label style="display:flex; gap:10px; align-items:center">
+              <input type="checkbox" id="consent" required />
+              <span>I agree to be contacted about my application.</span>
+            </label>
+            <button class="cta" id="submitBtn" type="submit">Submit application</button>
+            <p class="sub" id="formStatus" role="status" aria-live="polite"></p>
           </form>
         </div></div>
         <div>
@@ -360,7 +378,29 @@
             </div>
             <p class="sub mt-4">Limited pilot seats available. Eligibility varies by city and partner.</p>
           </div></div>
+          <div class="card mt-4"><div class="card-head"><h3>Need help deciding?</h3></div><div class="card-body">
+            <p>Book a 15‑minute call with an advisor to find the right path and get your questions answered.</p>
+            <a class="cta" href="#contact">Contact us</a>
+          </div></div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Career Services -->
+  <section id="career">
+    <div class="container">
+      <h2>Career Services</h2>
+      <p class="sub">We help you turn skills into offers with hands‑on support before, during, and after the program.</p>
+      <div class="grid cols-3">
+        <div class="card"><div class="card-body"><h3>Resume & LinkedIn Lab</h3><p class="sub">Rewrite your resume with impact metrics and optimize your profile to rank in recruiter searches.</p></div></div>
+        <div class="card"><div class="card-body"><h3>Mock Interviews</h3><p class="sub">Practice behavioral and technical interviews with feedback and recordings.</p></div></div>
+        <div class="card"><div class="card-body"><h3>Projects Portfolio</h3><p class="sub">Package your capstone and labs into a polished portfolio with README, diagrams, and deploy links.</p></div></div>
+      </div>
+      <div class="grid cols-3 mt-8">
+        <div class="card"><div class="card-body"><h3>Job Search Playbook</h3><p class="sub">Weekly targets, outreach scripts, and a tracker template that keeps you moving.</p></div></div>
+        <div class="card"><div class="card-body"><h3>Referrals & Intros</h3><p class="sub">Warm intros through our mentor and alumni network when there’s a fit.</p></div></div>
+        <div class="card"><div class="card-body"><h3>Offer Negotiation</h3><p class="sub">Comp guidance and scenario practice so you can confidently negotiate.</p></div></div>
       </div>
     </div>
   </section>
@@ -394,47 +434,96 @@
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Countdown to Jan 10, 2026 09:00 America/Toronto (EST)
-    const tzOffset = -5 * 60; // EST offset in minutes (no DST considered here)
-    const target = new Date('2026-01-10T14:00:00Z'); // 09:00 EST = 14:00 UTC
-    function tick(){
-      const now = new Date();
-      const diff = target - now;
-      const d = Math.max(0, Math.floor(diff / (1000*60*60*24)));
-      const h = Math.max(0, Math.floor((diff / (1000*60*60)) % 24));
-      const m = Math.max(0, Math.floor((diff / (1000*60)) % 60));
-      const s = Math.max(0, Math.floor((diff / 1000) % 60));
-      document.getElementById('d').textContent = String(d).padStart(2,'0');
-      document.getElementById('h').textContent = String(h).padStart(2,'0');
-      document.getElementById('m').textContent = String(m).padStart(2,'0');
-      document.getElementById('s').textContent = String(s).padStart(2,'0');
-    }
-    tick(); setInterval(tick, 1000);
+    // Robust countdown to 2026-01-10 09:00 America/Toronto
+    (function countdown(){
+      // Target time in UTC corresponding to 9:00 AM EST (UTC-5) on Jan 10, 2026
+      const target = new Date(Date.UTC(2026, 0, 10, 14, 0, 0));
+      function update(){
+        const now = new Date();
+        const diff = target.getTime() - now.getTime();
+        const zero = Math.max(0, diff);
+        const d = Math.floor(zero / 86400000);
+        const h = Math.floor((zero % 86400000) / 3600000);
+        const m = Math.floor((zero % 3600000) / 60000);
+        const s = Math.floor((zero % 60000) / 1000);
+        const $ = id => document.getElementById(id);
+        if ($('d') && $('h') && $('m') && $('s')){
+          $('d').textContent = String(d).padStart(2,'0');
+          $('h').textContent = String(h).padStart(2,'0');
+          $('m').textContent = String(m).padStart(2,'0');
+          $('s').textContent = String(s).padStart(2,'0');
+        }
+        if (diff <= 0) clearInterval(timer);
+      }
+      update();
+      const timer = setInterval(update, 1000);
+    })();
 
-    // Simple slider
-    const slides = Array.from(document.querySelectorAll('#slider .slide'));
-    const dotsWrap = document.getElementById('dots');
-    let idx = 0; let timer;
-    function renderDots(){
-      dotsWrap.innerHTML = '';
-      slides.forEach((_,i)=>{
-        const b = document.createElement('button');
-        b.className = 'dot' + (i===idx?' active':'');
-        b.setAttribute('aria-label', 'Go to slide ' + (i+1));
-        b.addEventListener('click', ()=>{go(i)});
-        dotsWrap.appendChild(b);
+    // Accessible slider with dots + auto-advance
+    (function slider(){
+      const root = document.getElementById('slider');
+      if(!root) return;
+      const slides = Array.from(root.querySelectorAll('.slide'));
+      const dotsWrap = document.getElementById('dots');
+      let idx = slides.findIndex(s=>s.classList.contains('active'));
+      if(idx < 0) idx = 0;
+      let timer;
+      function renderDots(){
+        if(!dotsWrap) return;
+        dotsWrap.innerHTML = '';
+        slides.forEach((_,i)=>{
+          const b = document.createElement('button');
+          b.className = 'dot' + (i===idx?' active':'');
+          b.setAttribute('aria-label', 'Go to slide ' + (i+1));
+          b.addEventListener('click', ()=>{go(i)});
+          dotsWrap.appendChild(b);
+        });
+      }
+      function go(i){
+        slides[idx].classList.remove('active');
+        idx = (i+slides.length)%slides.length;
+        slides[idx].classList.add('active');
+        renderDots();
+        reset();
+      }
+      function next(){ go(idx+1); }
+      function reset(){ clearInterval(timer); timer = setInterval(next, 4500); }
+      renderDots(); reset();
+    })();
+
+    // Progressive enhancement: AJAX submit to Formspree
+    (function forms(){
+      const form = document.getElementById('applyForm');
+      if(!form) return;
+      const btn = document.getElementById('submitBtn');
+      const status = document.getElementById('formStatus');
+      function setStatus(msg, ok){
+        status.textContent = msg;
+        status.style.color = ok ? '#065F46' : '#B91C1C';
+      }
+      form.addEventListener('submit', async (e)=>{
+        e.preventDefault();
+        // Simple validation
+        if(!form.reportValidity || form.reportValidity()){
+          btn.disabled = true; btn.textContent = 'Submitting…'; setStatus('', true);
+          try{
+            const data = new FormData(form);
+            // For Formspree, ensure reply-to
+            if(!data.get('_replyto') && data.get('email')) data.append('_replyto', data.get('email'));
+            const res = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' }});
+            if(res.ok){
+              setStatus('Thanks! Your application has been received. We will contact you shortly.', true);
+              form.reset();
+            } else {
+              const j = await res.json().catch(()=>({}));
+              const msg = (j && j.errors && j.errors[0] && j.errors[0].message) || 'Submission failed. Please try again or email admissions@liontechacademy.com.';
+              setStatus(msg, false);
+            }
+          }catch(err){ setStatus('Network error. Please try again.', false); }
+          finally{ btn.disabled = false; btn.textContent = 'Submit application'; }
+        }
       });
-    }
-    function go(i){
-      slides[idx].classList.remove('active');
-      idx = (i+slides.length)%slides.length;
-      slides[idx].classList.add('active');
-      renderDots();
-      reset();
-    }
-    function next(){ go(idx+1); }
-    function reset(){ clearInterval(timer); timer = setInterval(next, 4500); }
-    renderDots(); reset();
+    })();
   </script>
 </body>
 </html>
