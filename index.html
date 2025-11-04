@@ -491,6 +491,37 @@
       renderDots(); reset();
     })();
 
+    // Success stories carousel
+    (function stories(){
+      const root = document.querySelector('#stories .stories');
+      if(!root) return;
+      const panes = Array.from(root.querySelectorAll('.story'));
+      const dotsWrap = document.getElementById('storiesDots');
+      let i = panes.findIndex(p=>p.classList.contains('active')); if(i<0) i=0;
+      let t;
+      function render(){
+        if(!dotsWrap) return;
+        dotsWrap.innerHTML='';
+        panes.forEach((_,idx)=>{
+          const b=document.createElement('button');
+          b.className='stories-dot'+(idx===i?' active':'');
+          b.setAttribute('aria-label','Go to story '+(idx+1));
+          b.addEventListener('click',()=>go(idx));
+          dotsWrap.appendChild(b);
+        });
+      }
+      function go(n){
+        panes[i].classList.remove('active');
+        i=(n+panes.length)%panes.length;
+        panes[i].classList.add('active');
+        render();
+        reset();
+      }
+      function next(){ go(i+1); }
+      function reset(){ clearInterval(t); t=setInterval(next,5000); }
+      render(); reset();
+    })();
+
     // Progressive enhancement: AJAX submit to Formspree
     (function forms(){
       const form = document.getElementById('applyForm');
