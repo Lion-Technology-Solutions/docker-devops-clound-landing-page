@@ -1,560 +1,1112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>LionTech Academy — Pilot Program: DevOps, Cloud, AI & Cybersecurity</title>
-  <meta name="description" content="LionTech Academy's pilot program in Canada—funded by cities, banks, and tech companies. Learn DevOps, Cloud, AI & Cybersecurity with mentor-led, job-ready training. Enroll now." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --brand-red:#E02127; --brand-blue:#1F3D8A; --brand-dark:#0F172A; --brand-text:#0B1020; --brand-muted:#6B7280;
-      --bg:#0b1020; --bg-soft:#F8FAFC; --card:#FFFFFF; --accent:#10B981; --ring:rgba(16,185,129,.35); --shadow:0 10px 25px rgba(2,6,23,.12); --radius:18px;
-      --grad:linear-gradient(90deg, var(--brand-red) 0%, var(--brand-red) 47%, var(--brand-blue) 47%, var(--brand-blue) 100%);
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--brand-text);background:var(--bg-soft)}
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
-    .container{max-width:1200px;margin:0 auto;padding:0 20px}
-
-    /* Header */
-    header{position:sticky;top:0;z-index:60;background:#fff;box-shadow:0 6px 18px rgba(2,6,23,.06)}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
-    .logo{display:flex;align-items:center;gap:12px;font-weight:800;font-size:20px;letter-spacing:.3px}
-    .logo-badge{width:40px;height:40px;border-radius:12px;background:var(--grad);display:grid;place-items:center;color:#fff;font-weight:800}
-    .nav-menu{display:flex;gap:22px;align-items:center}
-    .cta{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:999px;background:var(--accent);color:#fff;font-weight:800;box-shadow:0 8px 18px rgba(16,185,129,.35)}
-    .cta:hover{transform:translateY(-1px);box-shadow:0 10px 22px rgba(16,185,129,.45)}
-
-    /* Hero */
-    .hero{position:relative;overflow:hidden;color:#fff;background:var(--grad)}
-    .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(1200px 320px at 70% 0%, rgba(255,255,255,.15), transparent 60%)}
-    .hero-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;padding:64px 0}
-    .hero h1{font-size:clamp(28px,5vw,48px);line-height:1.05;margin:0 0 12px;font-weight:800}
-    .hero p{font-size:clamp(16px,2.2vw,18px);opacity:.95;margin:0 0 22px}
-    .hero-card{background:#ffffff12;border:1px solid #ffffff2a;border-radius:var(--radius);padding:18px;backdrop-filter:blur(6px)}
-    .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:#ffffff18;border:1px solid #ffffff30;color:#fff;font-weight:700;font-size:12px}
-
-    /* Slider */
-    .slider{position:relative;border-radius:var(--radius);overflow:hidden;border:1px solid #e5e7eb;box-shadow:var(--shadow);height:380px}
-    .slide{position:absolute;inset:0;opacity:0;transition:opacity .6s ease}
-    .slide.active{opacity:1}
-    .slider-controls{position:absolute;bottom:12px;left:0;right:0;display:flex;justify-content:center;gap:10px}
-    .dot{width:10px;height:10px;border-radius:999px;background:#ffffff80;border:1px solid #fff;cursor:pointer}
-    .dot.active{background:#fff}
-
-    /* Sections */
-    section{padding:64px 0}
-    h2{font-size:clamp(22px,3vw,32px);margin:0 0 14px}
-    .sub{color:var(--brand-muted);margin:0 0 28px}
-    .grid{display:grid;gap:20px}
-    @media(min-width:900px){.grid.cols-3{grid-template-columns:repeat(3,1fr)}.grid.cols-2{grid-template-columns:repeat(2,1fr)}}
-    .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid #e5e7eb;overflow:hidden}
-    .card-head{padding:20px;background:linear-gradient(135deg,rgba(224,33,39,.1),rgba(31,61,138,.08));border-bottom:1px solid #e5e7eb}
-    .card-head h3{margin:0;font-size:20px}
-    .card-body{padding:20px}
-    details{border:1px dashed #e5e7eb;border-radius:12px;padding:14px 16px;background:#fafafa}
-    details summary{cursor:pointer;font-weight:700}
-    details[open]{background:#fff;border-style:solid;box-shadow:0 10px 18px rgba(2,6,23,.06)}
-    .syllabus{display:grid;gap:10px;margin-top:12px}
-    .syllabus li{padding:10px 12px;background:#f8fafc;border-radius:10px;border:1px solid #eef2f7}
-
-    /* People */
-    .avatar{width:64px;height:64px;border-radius:999px;object-fit:cover;border:3px solid #fff;box-shadow:var(--shadow)}
-    .person{display:flex;align-items:center;gap:14px}
-
-    /* Pricing */
-    .price-strip{display:flex;flex-wrap:wrap;gap:16px;align-items:center;background:#fff;border:1px solid #e5e7eb;border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
-    .price-tag{font-weight:800;font-size:28px}
-    .strike{color:#64748b;text-decoration:line-through}
-    .save{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;background:#ECFDF5;color:#065F46;border:1px solid #A7F3D0;font-size:12px;font-weight:800}
-
-    /* Countdown */
-    .countdown{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
-    .timer{display:grid;place-items:center;width:90px;height:90px;border-radius:16px;background:#fff;border:1px solid #e5e7eb;box-shadow:var(--shadow)}
-    .timer strong{font-size:24px}
-    .timer span{font-size:12px;color:#64748b}
-
-    /* Footer */
-    footer{background:#0b1020;color:#cbd5e1;padding:40px 0}
-    footer a{color:#e2e8f0}
-
-    /* Utility */
-    .mt-8{margin-top:32px}.mt-4{margin-top:16px}.mb-2{margin-bottom:8px}.center{text-align:center}
-    .ribbon{display:flex;justify-content:center;align-items:center;gap:10px;padding:10px 16px;background:#111827;color:#fff;font-weight:800}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LionTech Smart Start Training Programs</title>
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/projects-canada/images/main/AI%20%20%26%20%20BRANDING%20AND%20DESIGN.png">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #1a3a5f;
+            --secondary: #f9a826;
+            --accent: #e63946;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f5f7fa;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        h1, h2, h3, h4 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: #e8960e;
+            transform: translateY(-2px);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+        }
+        
+        .btn-primary:hover {
+            background-color: #0f2a46;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0;
+            color: var(--primary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 58, 95, 0.8), rgba(26, 58, 95, 0.9)), url('https://raw.githubusercontent.com/projects-canada/images/main/prog2.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 120px 0;
+        }
+        
+        .hero h1 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .countdown {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        
+        .countdown-item {
+            margin: 0 10px;
+            background: rgba(255,255,255,0.2);
+            padding: 15px;
+            border-radius: 5px;
+            min-width: 80px;
+        }
+        
+        .countdown-number {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        
+        .countdown-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+        
+        /* About Section */
+        .about {
+            background-color: white;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-video {
+            flex: 1;
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .funding-breakdown {
+            display: flex;
+            margin: 2rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .partner-funding {
+            width: 71%;
+            background-color: var(--primary);
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .student-funding {
+            width: 29%;
+            background-color: var(--secondary);
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        /* Programs Section */
+        .programs {
+            background-color: #f8f9fa;
+        }
+        
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .program-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .program-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .program-image {
+            height: 180px;
+            overflow: hidden;
+        }
+        
+        .program-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .program-card:hover .program-image img {
+            transform: scale(1.05);
+        }
+        
+        .program-content {
+            padding: 20px;
+        }
+        
+        .program-price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 10px 0;
+        }
+        
+        .program-duration {
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+        
+        .syllabus-btn {
+            background: none;
+            border: none;
+            color: var(--primary);
+            text-decoration: underline;
+            cursor: pointer;
+            margin: 10px 0;
+            font-size: 0.9rem;
+        }
+        
+        .syllabus-content {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #f5f7fa;
+            border-radius: 5px;
+        }
+        
+        .syllabus-content ul {
+            padding-left: 20px;
+        }
+        
+        .syllabus-content li {
+            margin-bottom: 5px;
+        }
+        
+        /* Workshops Section */
+        .workshops {
+            background-color: white;
+        }
+        
+        .graduation-event {
+            background: linear-gradient(135deg, var(--primary), #2c5282);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .graduation-event h3 {
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .event-details {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .event-detail {
+            margin: 10px;
+        }
+        
+        /* Gallery Section */
+        .gallery {
+            background-color: #f8f9fa;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            height: 200px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .video-gallery {
+            margin-top: 40px;
+        }
+        
+        .video-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .video-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Forms Section */
+        .forms {
+            background-color: white;
+        }
+        
+        .form-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .form-box {
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .countdown-item {
+                min-width: 60px;
+                padding: 10px;
+            }
+            
+            .countdown-number {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            section {
+                padding: 50px 0;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .countdown {
+                flex-wrap: wrap;
+            }
+            
+            .countdown-item {
+                margin: 5px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- Ribbon: Pilot announcement -->
-  <div class="ribbon" role="status" aria-live="polite">
-    <span>🚀 LionTech Pilot Program</span>
-    <span>Funded by Canadian cities, banks & tech companies</span>
-  </div>
-
-  <!-- Header -->
-  <header role="banner" aria-label="Site Navigation">
-    <div class="container nav">
-      <a href="#top" class="logo" aria-label="LionTech Academy Home">
-        <div class="logo-badge" aria-hidden="true">LT</div>
-        <span>LIONTECH ACADEMY</span>
-      </a>
-      <nav class="nav-menu" aria-label="Primary">
-        <a href="#programs">Programs</a>
-        <a href="#students">Students</a>
-        <a href="#lecturers">Lecturers</a>
-        <a href="#lectures">Lectures</a>
-        <a href="#enroll" class="cta" aria-label="Enroll now">Enroll Now</a>
-      </nav>
-    </div>
-  </header>
-
-  <!-- Hero -->
-  <section class="hero" id="top">
-    <div class="container hero-wrap">
-      <div>
-        <div class="hero-card">
-          <h1>Get job‑ready skills in <span aria-label="DevOps">DevOps</span>, <span aria-label="Cloud">Cloud</span>, <span aria-label="AI">AI</span> & <span aria-label="Cybersecurity">Cybersecurity</span>.</h1>
-          <p>Join our Canada‑backed pilot cohort with heavy partner funding. Learn live from industry engineers, build portfolio projects, and graduate with confidence.</p>
-          <div class="pill">Next cohort starts <strong>Jan 10, 2026</strong> · Saturdays <strong>9–11 AM EST</strong></div>
-          <div class="mt-8 countdown" id="countdown" aria-label="Countdown to next cohort" role="timer" aria-live="polite">
-            <div class="timer" aria-label="Days remaining"><strong id="d">00</strong><span>Days</span></div>
-            <div class="timer" aria-label="Hours remaining"><strong id="h">00</strong><span>Hours</span></div>
-            <div class="timer" aria-label="Minutes remaining"><strong id="m">00</strong><span>Minutes</span></div>
-            <div class="timer" aria-label="Seconds remaining"><strong id="s">00</strong><span>Seconds</span></div>
-            <a class="cta" href="#enroll">Apply before seats fill</a>
-          </div>
-        </div>
-        <div class="price-strip mt-8" role="group" aria-label="Pilot pricing">
-          <div>
-            <div class="sub">Original tuition (all programs)</div>
-            <div class="price-tag strike">CAD $3,500</div>
-          </div>
-          <div>
-            <div class="sub">Pilot Tuition</div>
-            <div class="price-tag">CAD $1,500</div>
-          </div>
-          <div>
-            <div class="sub">Partner pays</div>
-            <div class="price-tag">CAD $2,500</div>
-          </div>
-          <div>
-            <div class="sub">Student pays</div>
-            <div class="price-tag">CAD $1,000</div>
-          </div>
-          <div class="save">~71% funded for you</div>
-        </div>
-      </div>
-
-      <!-- Slider -->
-      <div>
-        <div class="slider" id="slider">
-          <img class="slide active" src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1400&auto=format&fit=crop" alt="Cohort collaborating live on projects"/>
-          <img class="slide" src="https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=1400&auto=format&fit=crop" alt="Student presenting a project"/>
-          <img class="slide" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1400&auto=format&fit=crop" alt="Small group mentorship"/>
-          <div class="slider-controls" id="dots"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Selling points -->
-  <section id="outcomes">
-    <div class="container">
-      <h2>Built to convert learning into outcomes</h2>
-      <p class="sub">Practical curriculum • Mentor feedback • Career support • Real capstone projects</p>
-      <div class="grid cols-4">
-        <div class="card"><div class="card-body"><h3>Hands‑on Labs</h3><p class="sub">Deploy, automate, and secure real environments—not just slides.</p></div></div>
-        <div class="card"><div class="card-body"><h3>Industry Mentors</h3><p class="sub">Weekly Q&A, reviews, and 1:1 guidance from practitioners.</p></div></div>
-        <div class="card"><div class="card-body"><h3>Career Boost</h3><p class="sub">Resume polish, LinkedIn, mock interviews & job strategy.</p></div></div>
-        <div class="card"><div class="card-body"><h3>Flexible & Live</h3><p class="sub">Weekend sessions with recordings and lifelong community.</p></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Programs (with syllabi) -->
-  <section id="programs">
-    <div class="container">
-      <h2>Programs</h2>
-      <p class="sub">Open the syllabus to see everything covered across each track.</p>
-      <div class="grid cols-2">
-        <!-- DevOps -->
-        <article class="card" id="devops">
-          <div class="card-head"><h3>DevOps Training</h3></div>
-          <div class="card-body">
-            <p class="mb-2">Master CI/CD, containers, Kubernetes, and infrastructure as code for modern delivery.</p>
-            <details><summary>View syllabus</summary>
-              <ol class="syllabus">
-                <li>Linux & Shell • Git & GitHub Flow</li>
-                <li>CI with GitHub Actions/Jenkins</li>
-                <li>Docker • Images • Compose</li>
-                <li>Kubernetes • Deployments • Services • Helm</li>
-                <li>Terraform IaC • Modules</li>
-                <li>Ansible • Secrets/Vault</li>
-                <li>Observability (Prometheus/Grafana)</li>
-                <li>Cloud Deployments (AWS/Azure) & Security</li>
-                <li>DevSecOps (SAST/DAST)</li>
-                <li>Capstone: Prod‑grade CI/CD → K8s</li>
-              </ol>
-            </details>
-          </div>
-        </article>
-        <!-- Cloud -->
-        <article class="card" id="cloud">
-          <div class="card-head"><h3>Cloud Computing Training</h3></div>
-          <div class="card-body">
-            <p class="mb-2">Design and operate resilient architectures across AWS/Azure/GCP.</p>
-            <details><summary>View syllabus</summary>
-              <ol class="syllabus">
-                <li>Cloud Basics • Regions • Pricing</li>
-                <li>AWS Core: IAM • VPC • EC2 • S3 • RDS • ELB</li>
-                <li>Azure Core: Identity • VNets • VMs • Storage</li>
-                <li>GCP Core: Projects • IAM • Compute • Storage</li>
-                <li>Serverless: Lambda/Functions • API GW</li>
-                <li>Containers: EKS/AKS/GKE</li>
-                <li>IaC: CloudFormation & Terraform</li>
-                <li>Security • Logging • Encryption</li>
-                <li>Cost Optimization • Monitoring</li>
-                <li>Capstone: Multi‑tier Cloud Design</li>
-              </ol>
-            </details>
-          </div>
-        </article>
-        <!-- AI -->
-        <article class="card" id="ai-entrepreneurs">
-          <div class="card-head"><h3>AI for Entrepreneurs & Innovators</h3></div>
-          <div class="card-body">
-            <p class="mb-2">Discover, prototype, and launch AI‑powered products and automations.</p>
-            <details><summary>View syllabus</summary>
-              <ol class="syllabus">
-                <li>AI landscape & opportunity</li>
-                <li>Prompting & research workflows</li>
-                <li>No‑code AI for web/data</li>
-                <li>Automation (Zapier/Make) & APIs</li>
-                <li>LLM prototyping & evaluation</li>
-                <li>Data basics • Cleaning • Metrics</li>
-                <li>UX & Guardrails • Feedback</li>
-                <li>Compliance • Privacy</li>
-                <li>Monetization & GTM</li>
-                <li>Demo Day: Pitch + Ship MVP</li>
-              </ol>
-            </details>
-          </div>
-        </article>
-        <!-- Cyber -->
-        <article class="card" id="cyber">
-          <div class="card-head"><h3>Cyber Security</h3></div>
-          <div class="card-body">
-            <p class="mb-2">Build a strong security foundation for networks, cloud, and applications.</p>
-            <details><summary>View syllabus</summary>
-              <ol class="syllabus">
-                <li>Threat Modeling • Security Basics</li>
-                <li>Network Security • Zero Trust</li>
-                <li>OS Hardening • Endpoint</li>
-                <li>IAM • SSO/MFA</li>
-                <li>Cloud Security (AWS/Azure/GCP)</li>
-                <li>SIEM (Elastic/Splunk) • Detection</li>
-                <li>Incident Response • Forensics</li>
-                <li>Vuln Mgmt • Pen‑testing Basics</li>
-                <li>Compliance: SOC2 • ISO 27001 • GDPR</li>
-                <li>Capstone: Small‑biz Sec Program</li>
-              </ol>
-            </details>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Students: gallery + testimonials -->
-  <section id="students">
-    <div class="container">
-      <h2>Students in Action</h2>
-      <p class="sub">Real people, real outcomes. Join a supportive community.</p>
-      <div class="grid cols-3">
-        <div class="card"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop" alt="Student smiling at laptop"/></div>
-        <div class="card"><img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=800&auto=format&fit=crop" alt="Group of students collaborating"/></div>
-        <div class="card"><img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=800&auto=format&fit=crop" alt="Student presenting project"/></div>
-      </div>
-      <div class="grid cols-3 mt-8">
-        <div class="card"><div class="card-body person"><img class="avatar" src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?q=80&w=256&auto=format&fit=crop" alt="Portrait of Amina"/><div><strong>Amina • DevOps Grad</strong><p class="sub">“The CI/CD + Kubernetes capstone helped me land my first DevOps role.”</p></div></div></div>
-        <div class="card"><div class="card-body person"><img class="avatar" src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=256&auto=format&fit=crop" alt="Portrait of Daniel"/><div><strong>Daniel • Cloud Grad</strong><p class="sub">“I designed a resilient AWS architecture for my capstone—now I do it at work.”</p></div></div></div>
-        <div class="card"><div class="card-body person"><img class="avatar" src="https://images.unsplash.com/photo-1541534401786-2077eed87a75?q=80&w=256&auto=format&fit=crop" alt="Portrait of Priya"/><div><strong>Priya • AI Grad</strong><p class="sub">“Built an AI MVP in 4 weeks and signed my first paying customers.”</p></div></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Lecturers -->
-  <section id="lecturers">
-    <div class="container">
-      <h2>Meet the Lecturers</h2>
-      <p class="sub">Practitioners from industry—bringing current best practices and real projects.</p>
-      <div class="grid cols-3">
-        <div class="card"><div class="card-body"><div class="person"><img class="avatar" src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?q=80&w=256&auto=format&fit=crop" alt="Lecturer: Sarah Kim"/><div><strong>Sarah Kim</strong><p class="sub">Sr. DevOps Engineer • Kubernetes • Terraform • SRE</p></div></div></div></div>
-        <div class="card"><div class="card-body"><div class="person"><img class="avatar" src="https://images.unsplash.com/photo-1542326237-94b1c5a538d9?q=80&w=256&auto=format&fit=crop" alt="Lecturer: Miguel Alvarez"/><div><strong>Miguel Alvarez</strong><p class="sub">Cloud Architect • AWS Well‑Architected • Cost Optimization</p></div></div></div></div>
-        <div class="card"><div class="card-body"><div class="person"><img class="avatar" src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=256&auto=format&fit=crop" alt="Lecturer: Jade Nwosu"/><div><strong>Jade Nwosu</strong><p class="sub">AI Product Lead • LLM apps • Automation • Responsible AI</p></div></div></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Lectures / Schedule (AI cohort example) -->
-  <section id="lectures">
-    <div class="container">
-      <h2>Lecture Schedule — AI for Entrepreneurs & Innovators</h2>
-      <p class="sub">Starts <strong>January 10, 2026</strong> · Saturdays <strong>9–11 AM EST</strong> · 8 weeks</p>
-      <div class="card"><div class="card-body">
-        <ol class="syllabus">
-          <li>Week 1 (Jan 10): AI landscape, opportunities & responsible innovation</li>
-          <li>Week 2 (Jan 17): Prompting & research workflows</li>
-          <li>Week 3 (Jan 24): No‑code tools for web & data</li>
-          <li>Week 4 (Jan 31): Automation with Zapier/Make & APIs</li>
-          <li>Week 5 (Feb 7): LLM product prototyping</li>
-          <li>Week 6 (Feb 14): Data prep & evaluation</li>
-          <li>Week 7 (Feb 21): UX for AI, guardrails & feedback</li>
-          <li>Week 8 (Feb 28): Monetization, GTM & Demo day</li>
-        </ol>
-      </div></div>
-    </div>
-  </section>
-
-  <!-- Enrollment (Formspree) -->
-  <section id="enroll">
-    <div class="container">
-      <h2>Apply now</h2>
-      <p class="sub">Tell us about you. An advisor will reach out with next steps.</p>
-      <div class="grid cols-2">
-        <div class="card"><div class="card-body">
-          <form id="applyForm" action="https://formspree.io/f/xzzklnzz" method="POST" aria-label="Application form" novalidate>
-            <input type="hidden" name="_subject" value="New LionTech Application" />
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="source" value="Landing Page" />
-            <label class="hidden">Do not fill this out if you're human: <input name="_gotcha"></label>
-
-            <div class="grid cols-2">
-              <label>Full name
-                <input name="name" required placeholder="Jane Doe" autocomplete="name" />
-              </label>
-              <label>Email
-                <input name="email" type="email" required placeholder="you@example.com" autocomplete="email" />
-              </label>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="https://raw.githubusercontent.com/projects-canada/images/main/AI%20%20%26%20%20BRANDING%20AND%20DESIGN.png" alt="LionTech Logo">
+                <h1>LionTech</h1>
             </div>
-            <div class="grid cols-2">
-              <label>Phone / WhatsApp
-                <input name="phone" inputmode="tel" placeholder="+1 647 381 8836" autocomplete="tel" />
-              </label>
-              <label>Program
-                <select name="program" required>
-                  <option value="">Select…</option>
-                  <option>DevOps Training</option>
-                  <option>Cloud Computing Training</option>
-                  <option>AI for Entrepreneurs & Innovators</option>
-                  <option>Cyber Security</option>
-                </select>
-              </label>
-            </div>
-            <label>City (for pilot eligibility)
-              <input name="city" placeholder="Toronto" />
-            </label>
-            <label>Your message
-              <textarea name="message" rows="4" placeholder="Tell us what you want to achieve…"></textarea>
-            </label>
-            <label style="display:flex; gap:10px; align-items:center">
-              <input type="checkbox" id="consent" required />
-              <span>I agree to be contacted about my application.</span>
-            </label>
-            <button class="cta" id="submitBtn" type="submit">Submit application</button>
-            <p class="sub" id="formStatus" role="status" aria-live="polite"></p>
-          </form>
-        </div></div>
-        <div>
-          <div class="card"><div class="card-head"><h3>Funding at a glance</h3></div><div class="card-body">
-            <div class="grid">
-              <div class="price-strip"><div><div class="sub">Original Tuition</div><div class="price-tag strike">CAD $3,500</div></div></div>
-              <div class="price-strip"><div><div class="sub">Pilot Tuition</div><div class="price-tag">CAD $1,500</div></div></div>
-              <div class="price-strip"><div><div class="sub">Partner Pays</div><div class="price-tag">CAD $2,500</div></div></div>
-              <div class="price-strip"><div><div class="sub">Student Pays</div><div class="price-tag">CAD $1,000</div></div><div class="save">Your out‑of‑pocket</div></div>
-            </div>
-            <p class="sub mt-4">Limited pilot seats available. Eligibility varies by city and partner.</p>
-          </div></div>
-          <div class="card mt-4"><div class="card-head"><h3>Need help deciding?</h3></div><div class="card-body">
-            <p>Book a 15‑minute call with an advisor to find the right path and get your questions answered.</p>
-            <a class="cta" href="#contact">Contact us</a>
-          </div></div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#programs">Programs</a></li>
+                    <li><a href="#workshops">Workshops</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact" class="btn">Enroll Now</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu">☰</div>
         </div>
-      </div>
-    </div>
-  </section>
+    </header>
 
-  <!-- Career Services -->
-  <section id="career">
-    <div class="container">
-      <h2>Career Services</h2>
-      <p class="sub">We help you turn skills into offers with hands‑on support before, during, and after the program.</p>
-      <div class="grid cols-3">
-        <div class="card"><div class="card-body"><h3>Resume & LinkedIn Lab</h3><p class="sub">Rewrite your resume with impact metrics and optimize your profile to rank in recruiter searches.</p></div></div>
-        <div class="card"><div class="card-body"><h3>Mock Interviews</h3><p class="sub">Practice behavioral and technical interviews with feedback and recordings.</p></div></div>
-        <div class="card"><div class="card-body"><h3>Projects Portfolio</h3><p class="sub">Package your capstone and labs into a polished portfolio with README, diagrams, and deploy links.</p></div></div>
-      </div>
-      <div class="grid cols-3 mt-8">
-        <div class="card"><div class="card-body"><h3>Job Search Playbook</h3><p class="sub">Weekly targets, outreach scripts, and a tracker template that keeps you moving.</p></div></div>
-        <div class="card"><div class="card-body"><h3>Referrals & Intros</h3><p class="sub">Warm intros through our mentor and alumni network when there’s a fit.</p></div></div>
-        <div class="card"><div class="card-body"><h3>Offer Negotiation</h3><p class="sub">Comp guidance and scenario practice so you can confidently negotiate.</p></div></div>
-      </div>
-    </div>
-  </section>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Smart Start Training Programs</h1>
+            <p>Funded by donations and support from sponsors in Canada. Launch your tech career with our affordable programs where partners cover 71% of tuition costs.</p>
+            
+            <div class="countdown" id="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="days">00</div>
+                    <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="hours">00</div>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="minutes">00</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="seconds">00</div>
+                    <div class="countdown-label">Seconds</div>
+                </div>
+            </div>
+            
+            <a href="#contact" class="btn btn-primary">Enroll Now</a>
+        </div>
+    </section>
 
-  <!-- Contact -->
-  <section id="contact">
-    <div class="container">
-      <h2>Contact LionTech</h2>
-      <p class="sub">We’re here to help you choose the right track and secure funding.</p>
-      <div class="grid cols-3">
-        <div class="card"><div class="card-body"><h4 class="mb-2">Phone / WhatsApp</h4><p><a href="https://wa.me/16473818836">+1 (647) 381‑8836</a></p></div></div>
-        <div class="card"><div class="card-body"><h4 class="mb-2">Email</h4><p><a href="mailto:admissions@liontechacademy.com">admissions@liontechacademy.com</a></p></div></div>
-        <div class="card"><div class="card-body"><h4 class="mb-2">Location</h4><p>Toronto, ON, Canada</p><p class="sub">Live online classes available worldwide</p></div></div>
-      </div>
-    </div>
-  </section>
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2>About Our Program</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>LionTech's Smart Start Training Programs are designed to launch your career in high-demand technology fields. Thanks to generous donations and support from our Canadian partners, we're able to make tech education accessible to everyone.</p>
+                    
+                    <div class="funding-breakdown">
+                        <div class="partner-funding">
+                            <h3>Partners Cover 71%</h3>
+                            <p>$2,500 CAD</p>
+                        </div>
+                        <div class="student-funding">
+                            <h3>You Pay 29%</h3>
+                            <p>$1,000 CAD</p>
+                        </div>
+                    </div>
+                    
+                    <p>Total Program Cost: $3,500 CAD</p>
+                    <p>Our programs combine theoretical knowledge with practical, hands-on experience to ensure you're job-ready upon completion. With small class sizes and industry-experienced instructors, we provide personalized attention to help you succeed.</p>
+                    <a href="#programs" class="btn">Explore Programs</a>
+                </div>
+                <div class="about-video">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/zzX1tsu2DLI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Thank you anchor -->
-  <section id="thank-you" class="center">
-    <div class="container"><div class="card"><div class="card-body"><h2>Thank you! 🎉</h2><p class="sub">Your application was submitted. Our admissions team will reach out shortly.</p><a class="cta" href="#top">Back to top</a></div></div></div>
-  </section>
+    <!-- Programs Section -->
+    <section class="programs" id="programs">
+        <div class="container">
+            <h2>Our Training Programs</h2>
+            <div class="programs-grid">
+                <!-- DevOps Program -->
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="https://raw.githubusercontent.com/projects-canada/images/main/prog2.jpg" alt="DevOps">
+                    </div>
+                    <div class="program-content">
+                        <h3>DevOps</h3>
+                        <p>Learn to bridge the gap between development and operations with modern DevOps practices.</p>
+                        <div class="program-price">$1,000 CAD</div>
+                        <div class="program-duration">Duration: 12 weeks</div>
+                        <button class="syllabus-btn">View Syllabus</button>
+                        <div class="syllabus-content">
+                            <h4>DevOps Syllabus</h4>
+                            <ul>
+                                <li>Introduction to DevOps Culture</li>
+                                <li>Version Control with Git</li>
+                                <li>Continuous Integration/Continuous Deployment</li>
+                                <li>Containerization with Docker</li>
+                                <li>Orchestration with Kubernetes</li>
+                                <li>Infrastructure as Code with Terraform</li>
+                                <li>Monitoring and Logging</li>
+                                <li>Cloud Platforms (AWS/Azure)</li>
+                            </ul>
+                        </div>
+                        <a href="#contact" class="btn">Enroll Now</a>
+                    </div>
+                </div>
+                
+                <!-- Cloud Computing Program -->
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="https://raw.githubusercontent.com/projects-canada/images/main/STUDENTS5.jpg" alt="Cloud Computing">
+                    </div>
+                    <div class="program-content">
+                        <h3>Cloud Computing</h3>
+                        <p>Master cloud technologies and architectures to build scalable, resilient applications.</p>
+                        <div class="program-price">$1,000 CAD</div>
+                        <div class="program-duration">Duration: 14 weeks</div>
+                        <button class="syllabus-btn">View Syllabus</button>
+                        <div class="syllabus-content">
+                            <h4>Cloud Computing Syllabus</h4>
+                            <ul>
+                                <li>Cloud Computing Fundamentals</li>
+                                <li>AWS Core Services (EC2, S3, RDS)</li>
+                                <li>Microsoft Azure Services</li>
+                                <li>Google Cloud Platform</li>
+                                <li>Cloud Security and Compliance</li>
+                                <li>Serverless Architecture</li>
+                                <li>Cloud Migration Strategies</li>
+                                <li>Cost Optimization</li>
+                            </ul>
+                        </div>
+                        <a href="#contact" class="btn">Enroll Now</a>
+                    </div>
+                </div>
+                
+                <!-- Cyber Security Program -->
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="https://raw.githubusercontent.com/projects-canada/images/main/CYBER%20SECURITY.jpeg" alt="Cyber Security">
+                    </div>
+                    <div class="program-content">
+                        <h3>Cyber Security</h3>
+                        <p>Develop skills to protect systems, networks, and data from digital attacks.</p>
+                        <div class="program-price">$1,000 CAD</div>
+                        <div class="program-duration">Duration: 16 weeks</div>
+                        <button class="syllabus-btn">View Syllabus</button>
+                        <div class="syllabus-content">
+                            <h4>Cyber Security Syllabus</h4>
+                            <ul>
+                                <li>Security Fundamentals</li>
+                                <li>Network Security</li>
+                                <li>Cryptography</li>
+                                <li>Ethical Hacking</li>
+                                <li>Vulnerability Assessment</li>
+                                <li>Incident Response</li>
+                                <li>Security Compliance</li>
+                                <li>Digital Forensics</li>
+                            </ul>
+                        </div>
+                        <a href="#contact" class="btn">Enroll Now</a>
+                    </div>
+                </div>
+                
+                <!-- AI for Website Design Program -->
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="https://raw.githubusercontent.com/projects-canada/images/main/AI%20DESIGN%20TOOLS.jpg" alt="AI for Website Design">
+                    </div>
+                    <div class="program-content">
+                        <h3>AI for Website Design</h3>
+                        <p>Leverage AI tools to create stunning, responsive websites with enhanced user experiences.</p>
+                        <div class="program-price">$1,000 CAD</div>
+                        <div class="program-duration">Duration: 10 weeks</div>
+                        <button class="syllabus-btn">View Syllabus</button>
+                        <div class="syllabus-content">
+                            <h4>AI for Website Design Syllabus</h4>
+                            <ul>
+                                <li>AI-Powered Design Tools</li>
+                                <li>Responsive Web Design</li>
+                                <li>User Experience (UX) Principles</li>
+                                <li>AI for Content Generation</li>
+                                <li>Automated Testing and Optimization</li>
+                                <li>Personalization Algorithms</li>
+                                <li>Web Performance Optimization</li>
+                                <li>AI in E-commerce</li>
+                            </ul>
+                        </div>
+                        <a href="#contact" class="btn">Enroll Now</a>
+                    </div>
+                </div>
+                
+                <!-- AI for Business Operations Program -->
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="https://raw.githubusercontent.com/projects-canada/images/main/AI%20FULL%20FLYER.png" alt="AI for Business Operations">
+                    </div>
+                    <div class="program-content">
+                        <h3>AI for Business Operations</h3>
+                        <p>Implement AI solutions to optimize business processes and drive operational efficiency.</p>
+                        <div class="program-price">$1,000 CAD</div>
+                        <div class="program-duration">Duration: 12 weeks</div>
+                        <button class="syllabus-btn">View Syllabus</button>
+                        <div class="syllabus-content">
+                            <h4>AI for Business Operations Syllabus</h4>
+                            <ul>
+                                <li>AI in Business Strategy</li>
+                                <li>Process Automation</li>
+                                <li>Predictive Analytics</li>
+                                <li>Supply Chain Optimization</li>
+                                <li>Customer Service Automation</li>
+                                <li>Data-Driven Decision Making</li>
+                                <li>AI Implementation Frameworks</li>
+                                <li>Measuring AI ROI</li>
+                            </ul>
+                        </div>
+                        <a href="#contact" class="btn">Enroll Now</a>
+                    </div>
+                </div>
+                
+                <!-- AI for Graphics Design and Branding Program -->
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="https://raw.githubusercontent.com/projects-canada/images/main/AI%20%20%26%20%20BRANDING%20AND%20DESIGN.png" alt="AI for Graphics Design and Branding">
+                    </div>
+                    <div class="program-content">
+                        <h3>AI for Graphics Design and Branding</h3>
+                        <p>Create compelling visual identities and branding materials using AI-powered design tools.</p>
+                        <div class="program-price">$1,000 CAD</div>
+                        <div class="program-duration">Duration: 10 weeks</div>
+                        <button class="syllabus-btn">View Syllabus</button>
+                        <div class="syllabus-content">
+                            <h4>AI for Graphics Design and Branding Syllabus</h4>
+                            <ul>
+                                <li>AI in Visual Design</li>
+                                <li>Brand Identity Development</li>
+                                <li>Logo Design with AI Tools</li>
+                                <li>Color Theory and Psychology</li>
+                                <li>Typography and Layout</li>
+                                <li>Marketing Material Creation</li>
+                                <li>Brand Consistency</li>
+                                <li>Portfolio Development</li>
+                            </ul>
+                        </div>
+                        <a href="#contact" class="btn">Enroll Now</a>
+                    </div>
+                </div>
+                
+                <!-- AI for Marketing and Boosting Sales Program -->
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="https://raw.githubusercontent.com/projects-canada/images/main/ChatGPT%20Image%20Nov%204%2C%202025%2C%2004_55_13%20PM.png" alt="AI for Marketing and Boosting Sales">
+                    </div>
+                    <div class="program-content">
+                        <h3>AI for Marketing and Boosting Sales</h3>
+                        <p>Utilize AI to create targeted marketing campaigns and drive sales growth.</p>
+                        <div class="program-price">$1,000 CAD</div>
+                        <div class="program-duration">Duration: 12 weeks</div>
+                        <button class="syllabus-btn">View Syllabus</button>
+                        <div class="syllabus-content">
+                            <h4>AI for Marketing and Boosting Sales Syllabus</h4>
+                            <ul>
+                                <li>AI in Digital Marketing</li>
+                                <li>Customer Segmentation</li>
+                                <li>Predictive Lead Scoring</li>
+                                <li>Personalized Marketing</li>
+                                <li>Chatbots for Customer Engagement</li>
+                                <li>Sales Forecasting</li>
+                                <li>Marketing Automation</li>
+                                <li>ROI Measurement</li>
+                            </ul>
+                        </div>
+                        <a href="#contact" class="btn">Enroll Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <footer role="contentinfo">
-    <div class="container" style="display:grid;gap:18px">
-      <div style="display:flex;align-items:center;gap:12px"><div class="logo-badge" aria-hidden="true">LT</div><strong>LIONTECH ACADEMY</strong></div>
-      <div style="font-size:14px;color:#94a3b8">© <span id="year"></span> LionTech Academy. All rights reserved.</div>
-    </div>
-  </footer>
+    <!-- Workshops Section -->
+    <section class="workshops" id="workshops">
+        <div class="container">
+            <h2>Upcoming Workshops & Graduations</h2>
+            <div class="graduation-event">
+                <h3>May 30th During the Smart Start Workshop</h3>
+                <p>Join us for our upcoming graduation ceremony celebrating the achievements of our students.</p>
+                <div class="event-details">
+                    <div class="event-detail">
+                        <strong>Date:</strong> May 30th, 2026
+                    </div>
+                    <div class="event-detail">
+                        <strong>Time:</strong> 8:00 AM - 4:00 PM
+                    </div>
+                    <div class="event-detail">
+                        <strong>Venue:</strong> 386 Blake St, Barrie, ON L4M 1L3
+                    </div>
+                </div>
+                <a href="#contact" class="btn" style="margin-top: 20px;">Register to Attend</a>
+            </div>
+        </div>
+    </section>
 
-  <script>
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <h2>Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://raw.githubusercontent.com/projects-canada/images/main/STUDENT1.jpg" alt="Student 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://raw.githubusercontent.com/projects-canada/images/main/STUDENTS5.jpg" alt="Students 5">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://raw.githubusercontent.com/projects-canada/images/main/ks8.jpg" alt="KS8">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://raw.githubusercontent.com/projects-canada/images/main/prog2.jpg" alt="Program 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://raw.githubusercontent.com/projects-canada/images/main/AI%20DESIGN%20TOOLS.jpg" alt="AI Design Tools">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://raw.githubusercontent.com/projects-canada/images/main/AI%20FULL%20FLYER.png" alt="AI Full Flyer">
+                </div>
+            </div>
+            
+            <div class="video-gallery">
+                <h3 class="text-center">Video Gallery</h3>
+                <div class="video-gallery-grid">
+                    <div class="video-item">
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/lAd53qmENPc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="video-item">
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/zzX1tsu2DLI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="video-item">
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/lAd53qmENPc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    // Robust countdown to 2026-01-10 09:00 America/Toronto
-    (function countdown(){
-      // Target time in UTC corresponding to 9:00 AM EST (UTC-5) on Jan 10, 2026
-      const target = new Date(Date.UTC(2026, 0, 10, 14, 0, 0));
-      function update(){
-        const now = new Date();
-        const diff = target.getTime() - now.getTime();
-        const zero = Math.max(0, diff);
-        const d = Math.floor(zero / 86400000);
-        const h = Math.floor((zero % 86400000) / 3600000);
-        const m = Math.floor((zero % 3600000) / 60000);
-        const s = Math.floor((zero % 60000) / 1000);
-        const $ = id => document.getElementById(id);
-        if ($('d') && $('h') && $('m') && $('s')){
-          $('d').textContent = String(d).padStart(2,'0');
-          $('h').textContent = String(h).padStart(2,'0');
-          $('m').textContent = String(m).padStart(2,'0');
-          $('s').textContent = String(s).padStart(2,'0');
-        }
-        if (diff <= 0) clearInterval(timer);
-      }
-      update();
-      const timer = setInterval(update, 1000);
-    })();
+    <!-- Forms Section -->
+    <section class="forms" id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="form-container">
+                <div class="form-box">
+                    <h3>Enrollment Form</h3>
+                    <form action="https://formspree.io/f/mdkprqdb" method="POST">
+                        <div class="form-group">
+                            <label for="full-name">Full Name</label>
+                            <input type="text" id="full-name" name="full-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="program">Program of Interest</label>
+                            <select id="program" name="program" required>
+                                <option value="">Select a program</option>
+                                <option value="devops">DevOps</option>
+                                <option value="cloud-computing">Cloud Computing</option>
+                                <option value="cyber-security">Cyber Security</option>
+                                <option value="ai-website-design">AI for Website Design</option>
+                                <option value="ai-business-operations">AI for Business Operations</option>
+                                <option value="ai-graphics-design">AI for Graphics Design and Branding</option>
+                                <option value="ai-marketing">AI for Marketing and Boosting Sales</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="education">Highest Education Level</label>
+                            <select id="education" name="education" required>
+                                <option value="">Select education level</option>
+                                <option value="high-school">High School</option>
+                                <option value="college">College</option>
+                                <option value="bachelor">Bachelor's Degree</option>
+                                <option value="master">Master's Degree</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="experience">Previous Experience (if any)</label>
+                            <textarea id="experience" name="experience" rows="4"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Additional Information</label>
+                            <textarea id="message" name="message" rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="btn">Submit Enrollment</button>
+                    </form>
+                </div>
+                
+                <div class="form-box">
+                    <h3>Contact Us</h3>
+                    <form action="https://formspree.io/f/mdkprqdb" method="POST">
+                        <div class="form-group">
+                            <label for="contact-name">Full Name</label>
+                            <input type="text" id="contact-name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-email">Email</label>
+                            <input type="email" id="contact-email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-message">Message</label>
+                            <textarea id="contact-message" name="message" rows="6" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    // Accessible slider with dots + auto-advance
-    (function slider(){
-      const root = document.getElementById('slider');
-      if(!root) return;
-      const slides = Array.from(root.querySelectorAll('.slide'));
-      const dotsWrap = document.getElementById('dots');
-      let idx = slides.findIndex(s=>s.classList.contains('active'));
-      if(idx < 0) idx = 0;
-      let timer;
-      function renderDots(){
-        if(!dotsWrap) return;
-        dotsWrap.innerHTML = '';
-        slides.forEach((_,i)=>{
-          const b = document.createElement('button');
-          b.className = 'dot' + (i===idx?' active':'');
-          b.setAttribute('aria-label', 'Go to slide ' + (i+1));
-          b.addEventListener('click', ()=>{go(i)});
-          dotsWrap.appendChild(b);
-        });
-      }
-      function go(i){
-        slides[idx].classList.remove('active');
-        idx = (i+slides.length)%slides.length;
-        slides[idx].classList.add('active');
-        renderDots();
-        reset();
-      }
-      function next(){ go(idx+1); }
-      function reset(){ clearInterval(timer); timer = setInterval(next, 4500); }
-      renderDots(); reset();
-    })();
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>LionTech</h3>
+                    <p>Smart Start Training Programs designed to launch your career in technology with affordable, high-quality education.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#programs">Programs</a></li>
+                        <li><a href="#workshops">Workshops</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Programs</h3>
+                    <ul>
+                        <li><a href="#programs">DevOps</a></li>
+                        <li><a href="#programs">Cloud Computing</a></li>
+                        <li><a href="#programs">Cyber Security</a></li>
+                        <li><a href="#programs">AI for Website Design</a></li>
+                        <li><a href="#programs">AI for Business Operations</a></li>
+                        <li><a href="#programs">AI for Graphics Design</a></li>
+                        <li><a href="#programs">AI for Marketing</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <p>Email: info@liontech.ca</p>
+                    <p>Phone: (123) 456-7890</p>
+                    <p>Address: 386 Blake St, Barrie, ON L4M 1L3</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 LionTech Smart Start Training Programs. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-    // Success stories carousel
-    (function stories(){
-      const root = document.querySelector('#stories .stories');
-      if(!root) return;
-      const panes = Array.from(root.querySelectorAll('.story'));
-      const dotsWrap = document.getElementById('storiesDots');
-      let i = panes.findIndex(p=>p.classList.contains('active')); if(i<0) i=0;
-      let t;
-      function render(){
-        if(!dotsWrap) return;
-        dotsWrap.innerHTML='';
-        panes.forEach((_,idx)=>{
-          const b=document.createElement('button');
-          b.className='stories-dot'+(idx===i?' active':'');
-          b.setAttribute('aria-label','Go to story '+(idx+1));
-          b.addEventListener('click',()=>go(idx));
-          dotsWrap.appendChild(b);
-        });
-      }
-      function go(n){
-        panes[i].classList.remove('active');
-        i=(n+panes.length)%panes.length;
-        panes[i].classList.add('active');
-        render();
-        reset();
-      }
-      function next(){ go(i+1); }
-      function reset(){ clearInterval(t); t=setInterval(next,5000); }
-      render(); reset();
-    })();
-
-    // Progressive enhancement: AJAX submit to Formspree
-    (function forms(){
-      const form = document.getElementById('applyForm');
-      if(!form) return;
-      const btn = document.getElementById('submitBtn');
-      const status = document.getElementById('formStatus');
-      function setStatus(msg, ok){
-        status.textContent = msg;
-        status.style.color = ok ? '#065F46' : '#B91C1C';
-      }
-      form.addEventListener('submit', async (e)=>{
-        e.preventDefault();
-        // Simple validation
-        if(!form.reportValidity || form.reportValidity()){
-          btn.disabled = true; btn.textContent = 'Submitting…'; setStatus('', true);
-          try{
-            const data = new FormData(form);
-            // For Formspree, ensure reply-to
-            if(!data.get('_replyto') && data.get('email')) data.append('_replyto', data.get('email'));
-            const res = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' }});
-            if(res.ok){
-              setStatus('Thanks! Your application has been received. We will contact you shortly.', true);
-              form.reset();
-            } else {
-              const j = await res.json().catch(()=>({}));
-              const msg = (j && j.errors && j.errors[0] && j.errors[0].message) || 'Submission failed. Please try again or email admissions@liontechacademy.com.';
-              setStatus(msg, false);
+    <script>
+        // Countdown Timer
+        function updateCountdown() {
+            const targetDate = new Date('May 30, 2026 08:00:00').getTime();
+            const now = new Date().getTime();
+            const timeLeft = targetDate - now;
+            
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').innerHTML = days < 10 ? '0' + days : days;
+            document.getElementById('hours').innerHTML = hours < 10 ? '0' + hours : hours;
+            document.getElementById('minutes').innerHTML = minutes < 10 ? '0' + minutes : minutes;
+            document.getElementById('seconds').innerHTML = seconds < 10 ? '0' + seconds : seconds;
+            
+            if (timeLeft < 0) {
+                clearInterval(countdownInterval);
+                document.getElementById('countdown').innerHTML = "The event has started!";
             }
-          }catch(err){ setStatus('Network error. Please try again.', false); }
-          finally{ btn.disabled = false; btn.textContent = 'Submit application'; }
         }
-      });
-    })();
-  </script>
+        
+        const countdownInterval = setInterval(updateCountdown, 1000);
+        updateCountdown();
+        
+        // Syllabus Toggle
+        document.querySelectorAll('.syllabus-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const syllabusContent = this.nextElementSibling;
+                if (syllabusContent.style.display === 'block') {
+                    syllabusContent.style.display = 'none';
+                    this.textContent = 'View Syllabus';
+                } else {
+                    syllabusContent.style.display = 'block';
+                    this.textContent = 'Hide Syllabus';
+                }
+            });
+        });
+        
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const nav = document.querySelector('nav ul');
+            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+        });
+        
+        // Adjust mobile menu on window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                document.querySelector('nav ul').style.display = 'flex';
+            } else {
+                document.querySelector('nav ul').style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
