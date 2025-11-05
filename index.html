@@ -89,6 +89,34 @@
             text-align: center;
         }
         
+        /* Flash Sale Banner */
+        .flash-sale {
+            background: linear-gradient(90deg, #ff0000, #ff6b6b, #ff0000);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            position: relative;
+            overflow: hidden;
+            animation: flash 1.5s infinite;
+        }
+        
+        @keyframes flash {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .flash-sale::before {
+            content: "🔥";
+            margin-right: 10px;
+        }
+        
+        .flash-sale::after {
+            content: "🔥";
+            margin-left: 10px;
+        }
+        
         /* Header Styles */
         header {
             background-color: white;
@@ -256,12 +284,18 @@
         /* Programs Section */
         .programs {
             background-color: #f8f9fa;
+            position: relative;
+            overflow: hidden;
         }
         
-        .programs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
+        .programs-slider {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .programs-track {
+            display: flex;
+            transition: transform 0.5s ease;
         }
         
         .program-card {
@@ -270,6 +304,8 @@
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s;
+            min-width: 300px;
+            margin: 0 15px;
         }
         
         .program-card:hover {
@@ -279,6 +315,7 @@
         .program-image {
             height: 180px;
             overflow: hidden;
+            position: relative;
         }
         
         .program-image img {
@@ -334,6 +371,50 @@
             margin-bottom: 5px;
         }
         
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .slider-dot.active {
+            background-color: var(--primary);
+        }
+        
+        /* DevOps Image Carousel */
+        .devops-carousel {
+            position: relative;
+            height: 180px;
+            overflow: hidden;
+        }
+        
+        .devops-track {
+            display: flex;
+            height: 100%;
+            transition: transform 0.5s ease;
+        }
+        
+        .devops-slide {
+            min-width: 100%;
+            height: 100%;
+        }
+        
+        .devops-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
         /* Workshops Section */
         .workshops {
             background-color: white;
@@ -369,12 +450,18 @@
         /* Gallery Section */
         .gallery {
             background-color: #f8f9fa;
+            position: relative;
+            overflow: hidden;
         }
         
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 15px;
+        .gallery-slider {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .gallery-track {
+            display: flex;
+            transition: transform 0.5s ease;
         }
         
         .gallery-item {
@@ -382,6 +469,8 @@
             overflow: hidden;
             height: 200px;
             box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            min-width: 250px;
+            margin: 0 10px;
         }
         
         .gallery-item img {
@@ -526,6 +615,10 @@
             .countdown-number {
                 font-size: 1.5rem;
             }
+            
+            .program-card {
+                min-width: 250px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -548,10 +641,19 @@
             .countdown-item {
                 margin: 5px;
             }
+            
+            .flash-sale {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Flash Sale Banner -->
+    <div class="flash-sale">
+        FLASH SALE: Enroll Now and Save 15%! Limited Time Offer - Ends Soon!
+    </div>
+
     <!-- Header -->
     <header>
         <div class="container header-container">
@@ -578,6 +680,8 @@
         <div class="container">
             <h1>Smart Start Training Programs</h1>
             <p>Funded by donations and support from sponsors in Canada. Launch your tech career with our affordable programs where partners cover 71% of tuition costs.</p>
+            
+            <h3 style="color: white; margin-top: 30px;">Next Program Start Date: January 10, 2026</h3>
             
             <div class="countdown" id="countdown">
                 <div class="countdown-item">
@@ -638,201 +742,224 @@
     <section class="programs" id="programs">
         <div class="container">
             <h2>Our Training Programs</h2>
-            <div class="programs-grid">
-                <!-- DevOps Program -->
-                <div class="program-card">
-                    <div class="program-image">
-                        <img src="https://raw.githubusercontent.com/projects-canada/images/main/prog2.jpg" alt="DevOps">
-                    </div>
-                    <div class="program-content">
-                        <h3>DevOps</h3>
-                        <p>Learn to bridge the gap between development and operations with modern DevOps practices.</p>
-                        <div class="program-price">$1,000 CAD</div>
-                        <div class="program-duration">Duration: 12 weeks</div>
-                        <button class="syllabus-btn">View Syllabus</button>
-                        <div class="syllabus-content">
-                            <h4>DevOps Syllabus</h4>
-                            <ul>
-                                <li>Introduction to DevOps Culture</li>
-                                <li>Version Control with Git</li>
-                                <li>Continuous Integration/Continuous Deployment</li>
-                                <li>Containerization with Docker</li>
-                                <li>Orchestration with Kubernetes</li>
-                                <li>Infrastructure as Code with Terraform</li>
-                                <li>Monitoring and Logging</li>
-                                <li>Cloud Platforms (AWS/Azure)</li>
-                            </ul>
+            <div class="programs-slider">
+                <div class="programs-track" id="programs-track">
+                    <!-- DevOps Program -->
+                    <div class="program-card">
+                        <div class="program-image">
+                            <div class="devops-carousel">
+                                <div class="devops-track" id="devops-track">
+                                    <div class="devops-slide">
+                                        <img src="https://raw.githubusercontent.com/projects-canada/images/main/dev1.jpg" alt="DevOps">
+                                    </div>
+                                    <div class="devops-slide">
+                                        <img src="https://raw.githubusercontent.com/projects-canada/images/main/dev2.jpg" alt="DevOps">
+                                    </div>
+                                    <div class="devops-slide">
+                                        <img src="https://raw.githubusercontent.com/projects-canada/images/main/dev3.jpg" alt="DevOps">
+                                    </div>
+                                    <div class="devops-slide">
+                                        <img src="https://raw.githubusercontent.com/projects-canada/images/main/dev4.jpg" alt="DevOps">
+                                    </div>
+                                    <div class="devops-slide">
+                                        <img src="https://raw.githubusercontent.com/projects-canada/images/main/dev5.png" alt="DevOps">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <a href="#contact" class="btn">Enroll Now</a>
+                        <div class="program-content">
+                            <h3>DevOps</h3>
+                            <p>Learn to bridge the gap between development and operations with modern DevOps practices.</p>
+                            <div class="program-price">$1,000 CAD</div>
+                            <div class="program-duration">Duration: 12 weeks</div>
+                            <button class="syllabus-btn">View Syllabus</button>
+                            <div class="syllabus-content">
+                                <h4>DevOps Syllabus</h4>
+                                <ul>
+                                    <li>Introduction to DevOps Culture</li>
+                                    <li>Version Control with Git</li>
+                                    <li>Continuous Integration/Continuous Deployment</li>
+                                    <li>Containerization with Docker</li>
+                                    <li>Orchestration with Kubernetes</li>
+                                    <li>Infrastructure as Code with Terraform</li>
+                                    <li>Monitoring and Logging</li>
+                                    <li>Cloud Platforms (AWS/Azure)</li>
+                                </ul>
+                            </div>
+                            <a href="#contact" class="btn">Enroll Now</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Cloud Computing Program -->
+                    <div class="program-card">
+                        <div class="program-image">
+                            <img src="https://raw.githubusercontent.com/projects-canada/images/main/STUDENTS5.jpg" alt="Cloud Computing">
+                        </div>
+                        <div class="program-content">
+                            <h3>Cloud Computing</h3>
+                            <p>Master cloud technologies and architectures to build scalable, resilient applications.</p>
+                            <div class="program-price">$1,000 CAD</div>
+                            <div class="program-duration">Duration: 14 weeks</div>
+                            <button class="syllabus-btn">View Syllabus</button>
+                            <div class="syllabus-content">
+                                <h4>Cloud Computing Syllabus</h4>
+                                <ul>
+                                    <li>Cloud Computing Fundamentals</li>
+                                    <li>AWS Core Services (EC2, S3, RDS)</li>
+                                    <li>Microsoft Azure Services</li>
+                                    <li>Google Cloud Platform</li>
+                                    <li>Cloud Security and Compliance</li>
+                                    <li>Serverless Architecture</li>
+                                    <li>Cloud Migration Strategies</li>
+                                    <li>Cost Optimization</li>
+                                </ul>
+                            </div>
+                            <a href="#contact" class="btn">Enroll Now</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Cyber Security Program -->
+                    <div class="program-card">
+                        <div class="program-image">
+                            <img src="https://raw.githubusercontent.com/projects-canada/images/main/CYBER%20SECURITY.jpeg" alt="Cyber Security">
+                        </div>
+                        <div class="program-content">
+                            <h3>Cyber Security</h3>
+                            <p>Develop skills to protect systems, networks, and data from digital attacks.</p>
+                            <div class="program-price">$1,000 CAD</div>
+                            <div class="program-duration">Duration: 16 weeks</div>
+                            <button class="syllabus-btn">View Syllabus</button>
+                            <div class="syllabus-content">
+                                <h4>Cyber Security Syllabus</h4>
+                                <ul>
+                                    <li>Security Fundamentals</li>
+                                    <li>Network Security</li>
+                                    <li>Cryptography</li>
+                                    <li>Ethical Hacking</li>
+                                    <li>Vulnerability Assessment</li>
+                                    <li>Incident Response</li>
+                                    <li>Security Compliance</li>
+                                    <li>Digital Forensics</li>
+                                </ul>
+                            </div>
+                            <a href="#contact" class="btn">Enroll Now</a>
+                        </div>
+                    </div>
+                    
+                    <!-- AI for Website Design Program -->
+                    <div class="program-card">
+                        <div class="program-image">
+                            <img src="https://raw.githubusercontent.com/projects-canada/images/main/AI%20DESIGN%20TOOLS.jpg" alt="AI for Website Design">
+                        </div>
+                        <div class="program-content">
+                            <h3>AI for Website Design</h3>
+                            <p>Leverage AI tools to create stunning, responsive websites with enhanced user experiences.</p>
+                            <div class="program-price">$1,000 CAD</div>
+                            <div class="program-duration">Duration: 10 weeks</div>
+                            <button class="syllabus-btn">View Syllabus</button>
+                            <div class="syllabus-content">
+                                <h4>AI for Website Design Syllabus</h4>
+                                <ul>
+                                    <li>AI-Powered Design Tools</li>
+                                    <li>Responsive Web Design</li>
+                                    <li>User Experience (UX) Principles</li>
+                                    <li>AI for Content Generation</li>
+                                    <li>Automated Testing and Optimization</li>
+                                    <li>Personalization Algorithms</li>
+                                    <li>Web Performance Optimization</li>
+                                    <li>AI in E-commerce</li>
+                                </ul>
+                            </div>
+                            <a href="#contact" class="btn">Enroll Now</a>
+                        </div>
+                    </div>
+                    
+                    <!-- AI for Business Operations Program -->
+                    <div class="program-card">
+                        <div class="program-image">
+                            <img src="https://raw.githubusercontent.com/projects-canada/images/main/AI%20FULL%20FLYER.png" alt="AI for Business Operations">
+                        </div>
+                        <div class="program-content">
+                            <h3>AI for Business Operations</h3>
+                            <p>Implement AI solutions to optimize business processes and drive operational efficiency.</p>
+                            <div class="program-price">$1,000 CAD</div>
+                            <div class="program-duration">Duration: 12 weeks</div>
+                            <button class="syllabus-btn">View Syllabus</button>
+                            <div class="syllabus-content">
+                                <h4>AI for Business Operations Syllabus</h4>
+                                <ul>
+                                    <li>AI in Business Strategy</li>
+                                    <li>Process Automation</li>
+                                    <li>Predictive Analytics</li>
+                                    <li>Supply Chain Optimization</li>
+                                    <li>Customer Service Automation</li>
+                                    <li>Data-Driven Decision Making</li>
+                                    <li>AI Implementation Frameworks</li>
+                                    <li>Measuring AI ROI</li>
+                                </ul>
+                            </div>
+                            <a href="#contact" class="btn">Enroll Now</a>
+                        </div>
+                    </div>
+                    
+                    <!-- AI for Graphics Design and Branding Program -->
+                    <div class="program-card">
+                        <div class="program-image">
+                            <img src="https://raw.githubusercontent.com/projects-canada/images/main/AI%20%20%26%20%20BRANDING%20AND%20DESIGN.png" alt="AI for Graphics Design and Branding">
+                        </div>
+                        <div class="program-content">
+                            <h3>AI for Graphics Design and Branding</h3>
+                            <p>Create compelling visual identities and branding materials using AI-powered design tools.</p>
+                            <div class="program-price">$1,000 CAD</div>
+                            <div class="program-duration">Duration: 10 weeks</div>
+                            <button class="syllabus-btn">View Syllabus</button>
+                            <div class="syllabus-content">
+                                <h4>AI for Graphics Design and Branding Syllabus</h4>
+                                <ul>
+                                    <li>AI in Visual Design</li>
+                                    <li>Brand Identity Development</li>
+                                    <li>Logo Design with AI Tools</li>
+                                    <li>Color Theory and Psychology</li>
+                                    <li>Typography and Layout</li>
+                                    <li>Marketing Material Creation</li>
+                                    <li>Brand Consistency</li>
+                                    <li>Portfolio Development</li>
+                                </ul>
+                            </div>
+                            <a href="#contact" class="btn">Enroll Now</a>
+                        </div>
+                    </div>
+                    
+                    <!-- AI for Marketing and Boosting Sales Program -->
+                    <div class="program-card">
+                        <div class="program-image">
+                            <img src="https://raw.githubusercontent.com/projects-canada/images/main/ChatGPT%20Image%20Nov%204%2C%202025%2C%2004_55_13%20PM.png" alt="AI for Marketing and Boosting Sales">
+                        </div>
+                        <div class="program-content">
+                            <h3>AI for Marketing and Boosting Sales</h3>
+                            <p>Utilize AI to create targeted marketing campaigns and drive sales growth.</p>
+                            <div class="program-price">$1,000 CAD</div>
+                            <div class="program-duration">Duration: 12 weeks</div>
+                            <button class="syllabus-btn">View Syllabus</button>
+                            <div class="syllabus-content">
+                                <h4>AI for Marketing and Boosting Sales Syllabus</h4>
+                                <ul>
+                                    <li>AI in Digital Marketing</li>
+                                    <li>Customer Segmentation</li>
+                                    <li>Predictive Lead Scoring</li>
+                                    <li>Personalized Marketing</li>
+                                    <li>Chatbots for Customer Engagement</li>
+                                    <li>Sales Forecasting</li>
+                                    <li>Marketing Automation</li>
+                                    <li>ROI Measurement</li>
+                                </ul>
+                            </div>
+                            <a href="#contact" class="btn">Enroll Now</a>
+                        </div>
                     </div>
                 </div>
-                
-                <!-- Cloud Computing Program -->
-                <div class="program-card">
-                    <div class="program-image">
-                        <img src="https://raw.githubusercontent.com/projects-canada/images/main/STUDENTS5.jpg" alt="Cloud Computing">
-                    </div>
-                    <div class="program-content">
-                        <h3>Cloud Computing</h3>
-                        <p>Master cloud technologies and architectures to build scalable, resilient applications.</p>
-                        <div class="program-price">$1,000 CAD</div>
-                        <div class="program-duration">Duration: 14 weeks</div>
-                        <button class="syllabus-btn">View Syllabus</button>
-                        <div class="syllabus-content">
-                            <h4>Cloud Computing Syllabus</h4>
-                            <ul>
-                                <li>Cloud Computing Fundamentals</li>
-                                <li>AWS Core Services (EC2, S3, RDS)</li>
-                                <li>Microsoft Azure Services</li>
-                                <li>Google Cloud Platform</li>
-                                <li>Cloud Security and Compliance</li>
-                                <li>Serverless Architecture</li>
-                                <li>Cloud Migration Strategies</li>
-                                <li>Cost Optimization</li>
-                            </ul>
-                        </div>
-                        <a href="#contact" class="btn">Enroll Now</a>
-                    </div>
-                </div>
-                
-                <!-- Cyber Security Program -->
-                <div class="program-card">
-                    <div class="program-image">
-                        <img src="https://raw.githubusercontent.com/projects-canada/images/main/CYBER%20SECURITY.jpeg" alt="Cyber Security">
-                    </div>
-                    <div class="program-content">
-                        <h3>Cyber Security</h3>
-                        <p>Develop skills to protect systems, networks, and data from digital attacks.</p>
-                        <div class="program-price">$1,000 CAD</div>
-                        <div class="program-duration">Duration: 16 weeks</div>
-                        <button class="syllabus-btn">View Syllabus</button>
-                        <div class="syllabus-content">
-                            <h4>Cyber Security Syllabus</h4>
-                            <ul>
-                                <li>Security Fundamentals</li>
-                                <li>Network Security</li>
-                                <li>Cryptography</li>
-                                <li>Ethical Hacking</li>
-                                <li>Vulnerability Assessment</li>
-                                <li>Incident Response</li>
-                                <li>Security Compliance</li>
-                                <li>Digital Forensics</li>
-                            </ul>
-                        </div>
-                        <a href="#contact" class="btn">Enroll Now</a>
-                    </div>
-                </div>
-                
-                <!-- AI for Website Design Program -->
-                <div class="program-card">
-                    <div class="program-image">
-                        <img src="https://raw.githubusercontent.com/projects-canada/images/main/AI%20DESIGN%20TOOLS.jpg" alt="AI for Website Design">
-                    </div>
-                    <div class="program-content">
-                        <h3>AI for Website Design</h3>
-                        <p>Leverage AI tools to create stunning, responsive websites with enhanced user experiences.</p>
-                        <div class="program-price">$1,000 CAD</div>
-                        <div class="program-duration">Duration: 10 weeks</div>
-                        <button class="syllabus-btn">View Syllabus</button>
-                        <div class="syllabus-content">
-                            <h4>AI for Website Design Syllabus</h4>
-                            <ul>
-                                <li>AI-Powered Design Tools</li>
-                                <li>Responsive Web Design</li>
-                                <li>User Experience (UX) Principles</li>
-                                <li>AI for Content Generation</li>
-                                <li>Automated Testing and Optimization</li>
-                                <li>Personalization Algorithms</li>
-                                <li>Web Performance Optimization</li>
-                                <li>AI in E-commerce</li>
-                            </ul>
-                        </div>
-                        <a href="#contact" class="btn">Enroll Now</a>
-                    </div>
-                </div>
-                
-                <!-- AI for Business Operations Program -->
-                <div class="program-card">
-                    <div class="program-image">
-                        <img src="https://raw.githubusercontent.com/projects-canada/images/main/AI%20FULL%20FLYER.png" alt="AI for Business Operations">
-                    </div>
-                    <div class="program-content">
-                        <h3>AI for Business Operations</h3>
-                        <p>Implement AI solutions to optimize business processes and drive operational efficiency.</p>
-                        <div class="program-price">$1,000 CAD</div>
-                        <div class="program-duration">Duration: 12 weeks</div>
-                        <button class="syllabus-btn">View Syllabus</button>
-                        <div class="syllabus-content">
-                            <h4>AI for Business Operations Syllabus</h4>
-                            <ul>
-                                <li>AI in Business Strategy</li>
-                                <li>Process Automation</li>
-                                <li>Predictive Analytics</li>
-                                <li>Supply Chain Optimization</li>
-                                <li>Customer Service Automation</li>
-                                <li>Data-Driven Decision Making</li>
-                                <li>AI Implementation Frameworks</li>
-                                <li>Measuring AI ROI</li>
-                            </ul>
-                        </div>
-                        <a href="#contact" class="btn">Enroll Now</a>
-                    </div>
-                </div>
-                
-                <!-- AI for Graphics Design and Branding Program -->
-                <div class="program-card">
-                    <div class="program-image">
-                        <img src="https://raw.githubusercontent.com/projects-canada/images/main/AI%20%20%26%20%20BRANDING%20AND%20DESIGN.png" alt="AI for Graphics Design and Branding">
-                    </div>
-                    <div class="program-content">
-                        <h3>AI for Graphics Design and Branding</h3>
-                        <p>Create compelling visual identities and branding materials using AI-powered design tools.</p>
-                        <div class="program-price">$1,000 CAD</div>
-                        <div class="program-duration">Duration: 10 weeks</div>
-                        <button class="syllabus-btn">View Syllabus</button>
-                        <div class="syllabus-content">
-                            <h4>AI for Graphics Design and Branding Syllabus</h4>
-                            <ul>
-                                <li>AI in Visual Design</li>
-                                <li>Brand Identity Development</li>
-                                <li>Logo Design with AI Tools</li>
-                                <li>Color Theory and Psychology</li>
-                                <li>Typography and Layout</li>
-                                <li>Marketing Material Creation</li>
-                                <li>Brand Consistency</li>
-                                <li>Portfolio Development</li>
-                            </ul>
-                        </div>
-                        <a href="#contact" class="btn">Enroll Now</a>
-                    </div>
-                </div>
-                
-                <!-- AI for Marketing and Boosting Sales Program -->
-                <div class="program-card">
-                    <div class="program-image">
-                        <img src="https://raw.githubusercontent.com/projects-canada/images/main/ChatGPT%20Image%20Nov%204%2C%202025%2C%2004_55_13%20PM.png" alt="AI for Marketing and Boosting Sales">
-                    </div>
-                    <div class="program-content">
-                        <h3>AI for Marketing and Boosting Sales</h3>
-                        <p>Utilize AI to create targeted marketing campaigns and drive sales growth.</p>
-                        <div class="program-price">$1,000 CAD</div>
-                        <div class="program-duration">Duration: 12 weeks</div>
-                        <button class="syllabus-btn">View Syllabus</button>
-                        <div class="syllabus-content">
-                            <h4>AI for Marketing and Boosting Sales Syllabus</h4>
-                            <ul>
-                                <li>AI in Digital Marketing</li>
-                                <li>Customer Segmentation</li>
-                                <li>Predictive Lead Scoring</li>
-                                <li>Personalized Marketing</li>
-                                <li>Chatbots for Customer Engagement</li>
-                                <li>Sales Forecasting</li>
-                                <li>Marketing Automation</li>
-                                <li>ROI Measurement</li>
-                            </ul>
-                        </div>
-                        <a href="#contact" class="btn">Enroll Now</a>
-                    </div>
+                <div class="slider-nav" id="programs-nav">
+                    <!-- Dots will be added by JavaScript -->
                 </div>
             </div>
         </div>
@@ -865,24 +992,32 @@
     <section class="gallery" id="gallery">
         <div class="container">
             <h2>Gallery</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="https://raw.githubusercontent.com/projects-canada/images/main/STUDENT1.jpg" alt="Student 1">
+            <div class="gallery-slider">
+                <div class="gallery-track" id="gallery-track">
+                    <div class="gallery-item">
+                        <img src="https://raw.githubusercontent.com/projects-canada/images/main/STUDENT1.jpg" alt="Student 1">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://raw.githubusercontent.com/projects-canada/images/main/STUDENTS5.jpg" alt="Students 5">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://raw.githubusercontent.com/projects-canada/images/main/ks8.jpg" alt="KS8">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://raw.githubusercontent.com/projects-canada/images/main/prog2.jpg" alt="Program 2">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://raw.githubusercontent.com/projects-canada/images/main/AI%20DESIGN%20TOOLS.jpg" alt="AI Design Tools">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://raw.githubusercontent.com/projects-canada/images/main/AI%20FULL%20FLYER.png" alt="AI Full Flyer">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://raw.githubusercontent.com/projects-canada/images/main/CYBER%20SECURITY.jpeg" alt="Cyber Security">
+                    </div>
                 </div>
-                <div class="gallery-item">
-                    <img src="https://raw.githubusercontent.com/projects-canada/images/main/STUDENTS5.jpg" alt="Students 5">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://raw.githubusercontent.com/projects-canada/images/main/ks8.jpg" alt="KS8">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://raw.githubusercontent.com/projects-canada/images/main/prog2.jpg" alt="Program 2">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://raw.githubusercontent.com/projects-canada/images/main/AI%20DESIGN%20TOOLS.jpg" alt="AI Design Tools">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://raw.githubusercontent.com/projects-canada/images/main/AI%20FULL%20FLYER.png" alt="AI Full Flyer">
+                <div class="slider-nav" id="gallery-nav">
+                    <!-- Dots will be added by JavaScript -->
                 </div>
             </div>
             
@@ -1038,7 +1173,7 @@
     <script>
         // Countdown Timer
         function updateCountdown() {
-            const targetDate = new Date('May 30, 2026 08:00:00').getTime();
+            const targetDate = new Date('January 10, 2026 08:00:00').getTime();
             const now = new Date().getTime();
             const timeLeft = targetDate - now;
             
@@ -1054,12 +1189,125 @@
             
             if (timeLeft < 0) {
                 clearInterval(countdownInterval);
-                document.getElementById('countdown').innerHTML = "The event has started!";
+                document.getElementById('countdown').innerHTML = "Enrollment is now open!";
             }
         }
         
         const countdownInterval = setInterval(updateCountdown, 1000);
         updateCountdown();
+        
+        // Programs Slider
+        const programsTrack = document.getElementById('programs-track');
+        const programsSlides = document.querySelectorAll('.program-card');
+        const programsNav = document.getElementById('programs-nav');
+        
+        let currentProgramSlide = 0;
+        const programsPerView = getProgramsPerView();
+        
+        function getProgramsPerView() {
+            if (window.innerWidth < 768) return 1;
+            if (window.innerWidth < 1024) return 2;
+            return 3;
+        }
+        
+        // Create dots for programs slider
+        programsSlides.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('slider-dot');
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => {
+                goToProgramSlide(index);
+            });
+            programsNav.appendChild(dot);
+        });
+        
+        function updateProgramsSlider() {
+            const slideWidth = programsSlides[0].offsetWidth + 30; // width + margin
+            programsTrack.style.transform = `translateX(-${currentProgramSlide * slideWidth}px)`;
+            
+            // Update active dot
+            document.querySelectorAll('#programs-nav .slider-dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentProgramSlide);
+            });
+        }
+        
+        function goToProgramSlide(index) {
+            currentProgramSlide = index;
+            updateProgramsSlider();
+        }
+        
+        function nextProgramSlide() {
+            currentProgramSlide = (currentProgramSlide + 1) % (programsSlides.length - programsPerView + 1);
+            updateProgramsSlider();
+        }
+        
+        // Auto-slide programs every 30 seconds
+        setInterval(nextProgramSlide, 30000);
+        
+        // Gallery Slider
+        const galleryTrack = document.getElementById('gallery-track');
+        const gallerySlides = document.querySelectorAll('.gallery-item');
+        const galleryNav = document.getElementById('gallery-nav');
+        
+        let currentGallerySlide = 0;
+        const galleryPerView = getGalleryPerView();
+        
+        function getGalleryPerView() {
+            if (window.innerWidth < 768) return 1;
+            if (window.innerWidth < 1024) return 3;
+            return 4;
+        }
+        
+        // Create dots for gallery slider
+        gallerySlides.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('slider-dot');
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => {
+                goToGallerySlide(index);
+            });
+            galleryNav.appendChild(dot);
+        });
+        
+        function updateGallerySlider() {
+            const slideWidth = gallerySlides[0].offsetWidth + 20; // width + margin
+            galleryTrack.style.transform = `translateX(-${currentGallerySlide * slideWidth}px)`;
+            
+            // Update active dot
+            document.querySelectorAll('#gallery-nav .slider-dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentGallerySlide);
+            });
+        }
+        
+        function goToGallerySlide(index) {
+            currentGallerySlide = index;
+            updateGallerySlider();
+        }
+        
+        function nextGallerySlide() {
+            currentGallerySlide = (currentGallerySlide + 1) % (gallerySlides.length - galleryPerView + 1);
+            updateGallerySlider();
+        }
+        
+        // Auto-slide gallery every 30 seconds
+        setInterval(nextGallerySlide, 30000);
+        
+        // DevOps Image Carousel
+        const devopsTrack = document.getElementById('devops-track');
+        const devopsSlides = document.querySelectorAll('.devops-slide');
+        let currentDevopsSlide = 0;
+        
+        function updateDevopsCarousel() {
+            devopsTrack.style.transform = `translateX(-${currentDevopsSlide * 100}%)`;
+        }
+        
+        function nextDevopsSlide() {
+            currentDevopsSlide = (currentDevopsSlide + 1) % devopsSlides.length;
+            updateDevopsCarousel();
+        }
+        
+        // Auto-slide DevOps images every 5 seconds
+        setInterval(nextDevopsSlide, 5000);
         
         // Syllabus Toggle
         document.querySelectorAll('.syllabus-btn').forEach(button => {
@@ -1106,6 +1354,17 @@
             } else {
                 document.querySelector('nav ul').style.display = 'none';
             }
+            
+            // Update sliders on resize
+            updateProgramsSlider();
+            updateGallerySlider();
+        });
+        
+        // Initialize sliders on page load
+        window.addEventListener('load', function() {
+            updateProgramsSlider();
+            updateGallerySlider();
+            updateDevopsCarousel();
         });
     </script>
 </body>
